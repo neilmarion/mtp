@@ -5,9 +5,9 @@
     <th>Last name</th>
     <th>First name</th>
     <th>Middle name</th>
-    <th>Birth date</th>
     <th>Office</th>
     <th>Organization</th>
+    <th>Birth date</th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,9 +18,9 @@
     <td><%= person.last_name %></td>
     <td><%= person.first_name %></td>
     <td><%= person.middle_name %></td>
-    <td><%= person.birth_date %></td>
     <td><%= person.office_id %></td>
     <td><%= person.organization_id %></td>
+    <td><%= person.birth_date %></td>
     <td><%= link_to 'Show', person %></td>
     <td><%= link_to 'Edit', edit_person_path(person) %></td>
     <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>

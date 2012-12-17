@@ -1,11 +1,11 @@
 Mtp::Application.routes.draw do
+  resources :people
+
+
   resources :organizations
 
 
   root :to => "people#index"
-
-  resources :people
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
