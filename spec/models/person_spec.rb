@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Person do
+  it { should have_many(:people_offices) }
   it { should have_many(:offices) }
   it { should belong_to(:organization) }
   
