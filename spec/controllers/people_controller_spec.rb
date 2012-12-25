@@ -40,11 +40,20 @@ describe PeopleController do
       get :index, {}, valid_session
       assigns(:people).should eq([person])
     end
+    
+    it "defaultly sorts @people in Person.last_name alphabetic order" do
+      person_1 = FactoryGirl.create(:person, last_name: "Charles")
+      person_2 = FactoryGirl.create(:person, last_name: "Aaron")
+      person_3 = FactoryGirl.create(:person, last_name: "Baron")
+      
+      get :index, {}, valid_session
+      assigns(:people).should eq([person_2, person_3, person_1])
+    end
   end
 
   describe "GET show" do
     it "assigns the requested person as @person" do
-      person = Person.create! valid_attributes
+      person = FactoryGirl.create(:person)
       get :show, {:id => person.to_param}, valid_session
       assigns(:person).should eq(person)
     end
