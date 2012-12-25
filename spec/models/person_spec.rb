@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Person do
-  it { should belong_to(:office) }
+  it { should have_many(:offices) }
   it { should belong_to(:organization) }
   
   it { should validate_presence_of(:first_name) }

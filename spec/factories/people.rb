@@ -4,4 +4,8 @@ FactoryGirl.define do
     sequence(:first_name) {|n| "Neil Marion_#{n}" }
     sequence(:middle_name) {|n| "Flores_#{n}" }
   end
+  
+  #factory :person_with_things, parent: :person do 
+    
+  #end
 end

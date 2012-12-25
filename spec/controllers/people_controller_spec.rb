@@ -158,7 +158,7 @@ describe PeopleController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested person" do
-        person = Person.create! valid_attributes
+        person = FactoryGirl.create(:person)
         # Assuming there are no other people in the database, this
         # specifies that the Person created on the previous line
         # receives the :update_attributes message with whatever params are
