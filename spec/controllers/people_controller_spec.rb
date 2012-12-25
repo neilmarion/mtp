@@ -42,9 +42,9 @@ describe PeopleController do
       @org_2 = FactoryGirl.create(:organization, name: "C", parent: @org_0)
       @org_3 = FactoryGirl.create(:organization, name: "A", parent: @org_0)
     
-      @person_1 = FactoryGirl.create(:person, first_name: "Jerome", middle_name: "Garcia", last_name: "Charles", organization: @org_1, office: Office.choir)
-      @person_2 = FactoryGirl.create(:person, first_name: "Bob", middle_name: "Antonov", last_name: "Aaron", organization: @org_2, office: Office.deaconship)
-      @person_3 = FactoryGirl.create(:person, first_name: "Ash", middle_name: "Zulueta",last_name: "Baron", organization: @org_3, office: Office.finance)
+      @person_1 = FactoryGirl.create(:person, first_name: "Jerome", middle_name: "Garcia", last_name: "Charles", organization: @org_1)
+      @person_2 = FactoryGirl.create(:person, first_name: "Bob", middle_name: "Antonov", last_name: "Aaron", organization: @org_2)
+      @person_3 = FactoryGirl.create(:person, first_name: "Ash", middle_name: "Zulueta",last_name: "Baron", organization: @org_3)
     end
     
     it "assigns all people as @people AND defaultly sorts @people in Person.last_name alphabetic order" do
@@ -182,7 +182,7 @@ describe PeopleController do
 
     describe "with invalid params" do
       it "assigns the person as @person" do
-        person = Person.create! valid_attributes
+        person = FactoryGirl.create(:person)
         # Trigger the behavior that occurs when invalid params are submitted
         Person.any_instance.stub(:save).and_return(false)
         put :update, {:id => person.to_param, :person => { "last_name" => "invalid value" }}, valid_session
