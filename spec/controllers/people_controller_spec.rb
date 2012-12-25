@@ -24,7 +24,8 @@ describe PeopleController do
   # Person. As you add validations to Person, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-
+    FactoryGirl.create(:organization)
+    {first_name: "Neil Marion", middle_name: "Flores", last_name: "Dela Cruz", offices_attributes: {"0" => {office: {id: Office.choir.to_param}}}, organization_attributes: {organization: {id: Organization.first.id}}}
   end
 
   # This should return the minimal set of values that should be in the session
@@ -111,7 +112,7 @@ describe PeopleController do
 
   describe "GET edit" do
     it "assigns the requested person as @person" do
-      person = Person.create! valid_attributes
+      person = FactoryGirl.create(:person)
       get :edit, {:id => person.to_param}, valid_session
       assigns(:person).should eq(person)
     end
