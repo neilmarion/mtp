@@ -12,11 +12,31 @@
     <div id="global">
       
     </div>
-    <div>
-      <div><%= link_to 'People', people_path %></div>
-      <div><%= link_to 'Organizations', organizations_path %></div>
+      
+    
+    
+    <div id="menutop">
+      <%= link_to 'People', people_path %>
+      <%= link_to 'Organizations', organizations_path %>
     </div>
-    <%= yield %>
+    
+    <div id="left">
+      <div class="block">
+        <ul class="leftmenu">
+          <li>
+            hello
+          </li>
+          <li>
+            hello
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="main">
+    
+      <%= yield %>
+      
+    </div>
   </div>
 
 </body>

@@ -36,3 +36,117 @@ $white: #fff;
     border-left: none;
   }
 }
+
+#menutop {
+  border-bottom: 1px solid #0379AE;
+}
+
+#left {
+  float: left;
+  width: 205px;
+  padding-top: 10px;
+}
+
+.block {
+  /* border-bottom: 1px solid $blue; */
+}
+
+@mixin clearlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block; 
+  }
+}
+
+ul.leftmenu {
+  @include clearlist;
+  font-size: 11px;
+  h3 {
+    margin: 0;
+    font-size: 12px;
+  }
+  ul.indent {
+    @include clearlist;
+    margin: 0 0 0px 10px;
+    padding: 0;
+    font-size: 11px;
+    li a {
+      font-weight: normal;
+    }
+    li {
+      display: block;
+    }
+  }
+  li {
+    display: block;
+    a, h3 {
+      display: block;
+      line-height: 24px;
+      padding-left: 10px;
+      height: 24px;
+    }
+    > a {
+      font-weight: bold;
+    }
+    .name {
+      font-weight: bold;
+    }
+  }
+  > li {
+    padding-right: 15px;
+  }
+  li.selected {
+    background: $light-blue;
+    > a {
+      background: $light-blue;
+    }
+  }
+  a.delete_leader,
+  a.delete_label {
+    float: right;
+    background: #999 !important;
+    color: $white;
+    width: 12px;
+    height: 12px;
+    line-height: 9px;
+    margin-top: 6px;
+    text-align: center;
+    font-weight: bold !important;
+    padding: 0;
+  }
+  a.delete_leader:hover,
+  a.delete_label:hover {
+    background: $blue;
+    text-decoration: none;
+  }
+  a.edit_search,
+  a.edit_search_label {
+    float: right;
+    background: #999 !important;
+    color: $white;
+    width: 12px;
+    height: 12px;
+    line-height: 9px;
+    margin-top: 6px;
+    text-align: center;
+    font-weight: bold !important;
+    padding: 0;
+  }
+  .name {
+    display: inline-block;
+  }
+  .listaction {
+    float: right;
+    font-size: 10px;
+    font-weight: normal;
+    img {
+      vertical-align: middle;
+    }
+  }
+}
+
+#main {
+  margin-left: 205px;
+}
