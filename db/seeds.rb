@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+Organization.create(name: 'IGLESIA NI CRISTO', type_of_children: 'District')
+
 if Office.all.empty?
   Office.create(name: 'Deaconship', organization_id: 0)
   Office.create(name: 'Choir', organization_id: 0)

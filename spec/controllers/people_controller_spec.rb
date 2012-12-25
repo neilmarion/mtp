@@ -36,9 +36,14 @@ describe PeopleController do
 
   describe "index" do
     before(:each) do
-      @person_1 = FactoryGirl.create(:person, first_name: "Jerome", middle_name: "Garcia", last_name: "Charles")
-      @person_2 = FactoryGirl.create(:person, first_name: "Bob", middle_name: "Antonov", last_name: "Aaron")
-      @person_3 = FactoryGirl.create(:person, first_name: "Ash", middle_name: "Zulueta",last_name: "Baron")   
+      @org_0 = FactoryGirl.create(:organization)
+      @org_1 = FactoryGirl.create(:organization, name: "B", parent: @org_0)
+      @org_2 = FactoryGirl.create(:organization, name: "C", parent: @org_0)
+      @org_3 = FactoryGirl.create(:organization, name: "A", parent: @org_0)
+    
+      @person_1 = FactoryGirl.create(:person, first_name: "Jerome", middle_name: "Garcia", last_name: "Charles", organization: @org_1)
+      @person_2 = FactoryGirl.create(:person, first_name: "Bob", middle_name: "Antonov", last_name: "Aaron", organization: @org_2)
+      @person_3 = FactoryGirl.create(:person, first_name: "Ash", middle_name: "Zulueta",last_name: "Baron", organization: @org_3)
     end
     
     it "assigns all people as @people AND defaultly sorts @people in Person.last_name alphabetic order" do
@@ -68,6 +73,14 @@ describe PeopleController do
       
       get :index, {:q =>{:s => "middle_name desc"}}, valid_session
       assigns(:people).should eq([@person_3, @person_1, @person_2])
+    end
+    
+    it "sorts all people alphabetically by sub-organization name" do
+      get :index, {:q =>{:s => "organizations.name asc"}}, valid_session
+      assigns(:people).should eq([@person_3, @person_1, @person_2])
+      
+      get :index, {:q =>{:s => "organizations.name desc"}}, valid_session
+      assigns(:people).should eq([@person_2, @person_1, @person_3])
     end
   end
 

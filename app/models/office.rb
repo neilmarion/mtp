@@ -1,5 +1,6 @@
 class Office < ActiveRecord::Base
   attr_accessible :name
+  attr_accessible :organization_id
   
   def self.deaconship
     @deaconship ||= Office.find_or_create_by_name_and_organization_id('deaconship', 0)
