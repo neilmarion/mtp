@@ -41,9 +41,9 @@ describe PeopleController do
       @org_2 = FactoryGirl.create(:organization, name: "C", parent: @org_0)
       @org_3 = FactoryGirl.create(:organization, name: "A", parent: @org_0)
     
-      @person_1 = FactoryGirl.create(:person, first_name: "Jerome", middle_name: "Garcia", last_name: "Charles", organization: @org_1)
-      @person_2 = FactoryGirl.create(:person, first_name: "Bob", middle_name: "Antonov", last_name: "Aaron", organization: @org_2)
-      @person_3 = FactoryGirl.create(:person, first_name: "Ash", middle_name: "Zulueta",last_name: "Baron", organization: @org_3)
+      @person_1 = FactoryGirl.create(:person, first_name: "Jerome", middle_name: "Garcia", last_name: "Charles", organization: @org_1, office: Office.choir)
+      @person_2 = FactoryGirl.create(:person, first_name: "Bob", middle_name: "Antonov", last_name: "Aaron", organization: @org_2, office: Office.deaconship)
+      @person_3 = FactoryGirl.create(:person, first_name: "Ash", middle_name: "Zulueta",last_name: "Baron", organization: @org_3, office: Office.finance)
     end
     
     it "assigns all people as @people AND defaultly sorts @people in Person.last_name alphabetic order" do
@@ -81,6 +81,16 @@ describe PeopleController do
       
       get :index, {:q =>{:s => "organizations.name desc"}}, valid_session
       assigns(:people).should eq([@person_2, @person_1, @person_3])
+    end
+    
+    it "filters all people by sub-organization" do
+      get :index, {:organization => @org1.id}, valid_session
+      assigns(:people).should eq([@person_1])
+    end
+    
+    it "filters all people by office" do
+      get :index, {:office => Office.finance.to_param}, valid_session
+      assigns(:people).should eq([@person_3])
     end
   end
 
