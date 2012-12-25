@@ -1,0 +1,38 @@
+/* Divs */
+$maxpagewidth: 11000px;
+$minpagewidth: 978px;
+
+/* Colors */
+$blue: #0379AE;
+$light-blue: #eaf1f6;
+$light-gray: #F2F2F2;
+$white: #fff;
+
+#outer {
+  max-width: $maxpagewidth;
+  min-width: $minpagewidth;
+  padding: 0 12px;
+  margin: 0 auto;
+}
+
+#global {
+  text-align: right;
+  font-size: 11px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  height: 40px;
+  line-height: 28px;
+  .item {
+    display: inline-block;
+    border-left: 1px solid $blue;
+    height: 28px;
+    line-height: 18px;
+    >a {
+      padding: 5px;
+      text-decoration: none;
+    }
+  }
+  .item:first-child {
+    border-left: none;
+  }
+}
