@@ -40,4 +40,9 @@ gem 'ancestry'
 
 group :development, :test do
   gem "rspec-rails", "~> 2.0"
+  gem 'factory_girl'
+  gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'shoulda'
 end
