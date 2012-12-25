@@ -34,20 +34,40 @@ describe PeopleController do
     {}
   end
 
-  describe "GET index" do
-    it "assigns all people as @people" do
-      person = FactoryGirl.create(:person)
-      get :index, {}, valid_session
-      assigns(:people).should eq([person])
+  describe "index" do
+    before(:each) do
+      @person_1 = FactoryGirl.create(:person, first_name: "Jerome", middle_name: "Garcia", last_name: "Charles")
+      @person_2 = FactoryGirl.create(:person, first_name: "Bob", middle_name: "Antonov", last_name: "Aaron")
+      @person_3 = FactoryGirl.create(:person, first_name: "Ash", middle_name: "Zulueta",last_name: "Baron")   
     end
     
-    it "defaultly sorts @people in Person.last_name alphabetic order" do
-      person_1 = FactoryGirl.create(:person, last_name: "Charles")
-      person_2 = FactoryGirl.create(:person, last_name: "Aaron")
-      person_3 = FactoryGirl.create(:person, last_name: "Baron")
-      
+    it "assigns all people as @people AND defaultly sorts @people in Person.last_name alphabetic order" do
       get :index, {}, valid_session
-      assigns(:people).should eq([person_2, person_3, person_1])
+      assigns(:people).should eq([@person_2, @person_3, @person_1])
+    end
+    
+    it "sorts all people alphabetically by last_name" do
+      get :index, {:q =>{:s => "last_name asc"}}, valid_session
+      assigns(:people).should eq([@person_2, @person_3, @person_1])
+      
+      get :index, {:q =>{:s => "last_name desc"}}, valid_session
+      assigns(:people).should eq([@person_1, @person_3, @person_2])
+    end
+    
+    it "sorts all people alphabetically by first_name" do
+      get :index, {:q =>{:s => "first_name asc"}}, valid_session
+      assigns(:people).should eq([@person_3, @person_2, @person_1])
+      
+      get :index, {:q =>{:s => "first_name desc"}}, valid_session
+      assigns(:people).should eq([@person_1, @person_2, @person_3])
+    end
+    
+    it "sorts all people alphabetically by middle_name" do
+      get :index, {:q =>{:s => "middle_name asc"}}, valid_session
+      assigns(:people).should eq([@person_2, @person_1, @person_3])
+      
+      get :index, {:q =>{:s => "middle_name desc"}}, valid_session
+      assigns(:people).should eq([@person_3, @person_1, @person_2])
     end
   end
 
