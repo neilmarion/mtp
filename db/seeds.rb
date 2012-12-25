@@ -13,7 +13,5 @@ if Office.all.empty?
   Office.create(name: 'Secretariat', organization_id: 0)
   Office.create(name: 'SCAN', organization_id: 0)
   Office.create(name: 'PNK', organization_id: 0)
-  Office.create(name: 'Buklod', organization_id: 0)
-  Office.create(name: 'Kadiwa', organization_id: 0)
-  Office.create(name: 'Binhi', organization_id: 0)
+  Office.create(name: 'Kapisanan', organization_id: 0)
 end
