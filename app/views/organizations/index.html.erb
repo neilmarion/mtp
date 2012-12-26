@@ -1,23 +1,26 @@
-<h1>Listing organizations</h1>
+<% root_org = Organization.first %>
+<div class="index carea">
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <div class="titlebar">
+    <h1>Organizations</h1>
+    <p>From this screen you can edit, delete or rearrange your organizations. Clicking "Add new organization"<br/>will do a quick add by name. To edit more details, permissions and other info, select "edit" from the item's<br/>name on the list.</p>
+  </div>
+  
+  <h2><%= root_org.name %> <small><%= link_to("edit", edit_organization_path(root_org)) %></small></h2>
+  
+  <% if root_org.children.length == 0 %>
+    <br/><%= link_to("Add Sub Org", '#', id: 'add_sub_orgs') %>
+  <% end %>
+  <div class="orgwrap">
+  <div id="orgs" style="<%= 'display:none' if root_org.children.length == 0 %>">
+    <%= render 'org_column', parent: root_org %>
+    <div class="org_column" id="spinner_column" style="display:none">
+      <a class="org_new">+ </a>
+      <ul>
+        <li><%= image_tag('spinner.gif') %></li>
+      </ul>
+    </div>
+  </div>
+  </div>
 
-<% @organizations.each do |organization| %>
-  <tr>
-    <td><%= organization.name %></td>
-    <td><%= link_to 'Show', organization %></td>
-    <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
-    <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Organization', new_organization_path %>
+</div>

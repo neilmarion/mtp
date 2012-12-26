@@ -8,6 +8,10 @@ $light-blue: #eaf1f6;
 $light-gray: #F2F2F2;
 $white: #fff;
 
+/* Fonts */
+$font-base: Tahoma, Arial;
+$font-secondary: Arial, Verdana;
+
 #outer {
   max-width: $maxpagewidth;
   min-width: $minpagewidth;
@@ -149,4 +153,150 @@ ul.leftmenu {
 
 #main {
   margin-left: 205px;
+}
+
+.titlebar {
+  background: $white;
+  padding: 14px 14px;
+  h1 {
+    font-family: $font-base;
+    color: #333333;
+    font-size: 21px;
+    margin: 0;
+  }
+  h3 {
+    font-family: $font-base;
+    color: #333333;
+    font-size: 15px;
+    margin-top: 2px;
+  }
+  h1 img {
+    margin-right: 5px;
+    vertical-align: initial;
+  }
+  a.backto {
+    font-size: 12px;
+    float: right;
+  }
+}
+
+body#welcome_controller {
+  .splash {
+    background: #fff;
+  }
+  
+  #logo {
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  .tutorials, .tour, .index, .privacy, .terms {
+    margin-top: 0;
+  }
+}
+
+.carea {
+  padding-bottom: 20px;
+  margin-left: 1px;
+}
+
+.orgwrap {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.org_column {
+  border: 1px solid silver;
+  width: 250px;
+  vertical-align: top;
+  padding: 0px;
+  display: inline-block;
+  white-space: normal !important;
+  .ctrl {
+    display: none;
+    font-size: 10px;
+    text-transform: uppercase;
+    margin-left: 20px;
+    background: $blue;
+    border-radius: 4px;
+    line-height: 1.5em;
+    margin-top: 3px;
+    vertical-align: top;
+    border: 1px solid silver;
+    a {
+      color: $white;
+      padding: 0 4px;
+    }
+    a:hover {text-decoration: none;}
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    height: 300px;
+    li {
+      line-height: 1.75em;
+      padding: 2px 5px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    li:hover {
+      background: $light-blue;
+    }
+    li:hover > .ctrl {
+      display: inline-block;
+    }
+    li.selected {
+      background: $blue;
+      a {color: #fff;}
+    }
+  }
+  .org_link {
+    line-height: 1.25em;
+    width: 75%;
+    display: inline-block;
+    text-decoration: none;
+    white-space: normal;
+  }
+}
+
+.org_empty {
+  height: 327px;
+  line-height: 300px;
+  vertical-align: middle;
+}
+
+.org_big_add {
+  text-align: center;
+  background: $light-gray;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 26px auto;
+  width: 100px;
+  line-height: 1em !important;
+  display:block;
+  .plus {
+    font-size: 50px;
+    display: block;
+    margin: 0 auto 10px auto;
+    background: $white;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 8px;
+  }
+}
+.org_big_add:hover {
+  text-decoration: none;
+}
+
+.org_new {
+  font-weight: bold;
+  border-bottom: 1px solid silver;
+  display: block;
+  padding: 6px 4px;
+}
+.org_new:hover {
+  background: $light-blue;
+  text-decoration: none;
 }
