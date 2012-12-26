@@ -1,3 +1,73 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  $('.import_from_crs_link').live 'click', ->
+    $('#import_from_crs form')[0].reset()
+    $('#organization_parent_id').val($(this).attr('data-parent-id'))
+    $('#import_from_crs').dialog
+      resizable: false,
+      height:444,
+      width:600,
+      modal: true,
+      buttons:
+        Cancel: ->
+          $(this).dialog('destroy')
+          $('#import_from_crs form')[0].reset()
+        Import: ->
+          form = $('form', this)
+          if $('#url').val() != "" && $('#admin_password').val() != ""
+            $.rails.handleRemote(form)
+            form.html("<img src=\"<%= asset_path('spinner.gif') %>\" />")
+          else
+            if $('#url').val() == ""
+              $('#url').focus()
+            else
+              $('#admin_password').focus()
+          false
+
+  $('#import_from_crs .save').live 'click', ->
+
+  $('#add_sub_orgs').live 'click', ->
+    $(this).hide()
+    $('#orgs').show()
+    
+    
+  $('.org_link').live 'ajax:before', ->
+    col$ = $(this).closest('div')
+    $('.org_link', col$).closest('li').removeClass('selected')
+    level = Number(col$.attr('data-level')) + 1
+    $('[data-level]').each ->
+      if Number($(this).attr('data-level')) >= level
+        $(this).hide()
+    # $('[data-level=' + level + ']').hide()
+    # $('[data-ancestor-id=' + $(this).attr('data-id') + ']').nextAll().hide()
+    $(this).closest('li').addClass('selected')
+    $('#spinner_column').show()
+    
+  $('.add_sub_org').live 'click', ->
+    $('#new_org form')[0].reset()
+    $('#organization_parent_id').val($(this).attr('data-parent-id'))
+    $('#new_org').dialog
+      resizable: false,
+      height:444,
+      width:600,
+      modal: true,
+      buttons: 
+        Cancel: ->
+          $(this).dialog('destroy')
+          $('#new_org form')[0].reset()
+
+  $('#new_org .save').live 'click', ->
+    form = $(this).closest('form')
+    if $(this).hasClass('save_and_more')
+      $('#add_another').val('true')
+    if $('#organization_terminology').val() != "" && $('#organization_name').val() != ""
+      $.rails.handleRemote(form)
+      form.html("<img src=\"<%= asset_path('spinner.gif') %>\" />")
+    else
+      if $('#organization_name').val() == ""
+        $('#organization_name').focus()
+      else
+        $('#organization_terminology').focus()
+      $.rails.handleRemote(form)
+    false
+    
+    
