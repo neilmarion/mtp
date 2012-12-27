@@ -1,30 +1,4 @@
 $ ->
-  $('.import_from_crs_link').live 'click', ->
-    $('#import_from_crs form')[0].reset()
-    $('#organization_parent_id').val($(this).attr('data-parent-id'))
-    $('#import_from_crs').dialog
-      resizable: false,
-      height:444,
-      width:600,
-      modal: true,
-      buttons:
-        Cancel: ->
-          $(this).dialog('destroy')
-          $('#import_from_crs form')[0].reset()
-        Import: ->
-          form = $('form', this)
-          if $('#url').val() != "" && $('#admin_password').val() != ""
-            $.rails.handleRemote(form)
-            form.html("<img src=\"<%= asset_path('spinner.gif') %>\" />")
-          else
-            if $('#url').val() == ""
-              $('#url').focus()
-            else
-              $('#admin_password').focus()
-          false
-
-  $('#import_from_crs .save').live 'click', ->
-
   $('#add_sub_orgs').live 'click', ->
     $(this).hide()
     $('#orgs').show()
