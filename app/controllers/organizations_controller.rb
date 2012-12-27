@@ -16,7 +16,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.js
       format.json { render json: @organization }
     end
   end
