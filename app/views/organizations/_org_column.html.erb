@@ -1,6 +1,6 @@
 <% has_children = parent.children.count > 0 %>
 <div class="org_column" id="<%= dom_id(parent) %>" data-level="<%= parent.ancestry.to_s.split('/').length %>">
-  <a class="org_new add_sub_org" href="#" data-parent-id="<%= parent.id %>">+ <%= parent.type_of_children %></a>
+  <a class="org_new add_sub_org" href="#" data-parent-id="<%= parent.id %>">+ <%= t('organizations.index.add_a_sub_org', type_of_children: parent.type_of_children) %></a>
   <ul>
     <% parent.children.order('name').each do |org| %>
       <%= render 'org', org: org %>
