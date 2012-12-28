@@ -41,13 +41,16 @@ class OrganizationsController < ApplicationController
   # POST /organizations.json
   def create
     @organization = Organization.new(params[:organization])
+    @parent = Organization.find(params[:organization][:parent_id])
 
     respond_to do |format|
       if @organization.save
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
+        format.js
         format.json { render json: @organization, status: :created, location: @organization }
       else
         format.html { render action: "new" }
+        format.js
         format.json { render json: @organization.errors, status: :unprocessable_entity }
       end
     end
