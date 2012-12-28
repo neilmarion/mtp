@@ -4,7 +4,7 @@ $ ->
     $('#orgs').show()
     
     
-  $('.org_link').live 'ajax:before', ->
+  $('.org_link').live 'click', ->
     col$ = $(this).closest('div')
     $('.org_link', col$).closest('li').removeClass('selected')
     level = Number(col$.attr('data-level')) + 1
