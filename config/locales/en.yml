@@ -2,4 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  general:
+    edit: "edit"
+  organizations:
+    index:
+      add_a_sub_org: Add new %{type_of_children}
+  
