@@ -21,3 +21,17 @@ $ ->
     unless $('a', this)[0]?
       tr = $(this).parent()
       document.location = '/people/' + tr.attr('data-id')
+
+
+  $('#add_person_div .save').live 'click', ->
+      form = $(this).closest('form')
+      if $('#person_first_name', form).val() == ''
+        alert('At a minimum you need to provide a first name.')
+        return false
+      if $(this).hasClass('save_and_more')
+        $('#add_another').val('true')
+      $.rails.handleRemote(form)
+      form.html("<img src=\"<%= asset_path('spinner.gif') %>\" />")
+      false
+      
+    true
