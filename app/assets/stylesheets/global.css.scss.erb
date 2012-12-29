@@ -306,3 +306,83 @@ body#welcome_controller {
 .form_no_sidebar {
   margin-left: 200px;
 }
+
+ul.pillmenu {
+  @include clearlist;
+}
+ul.pillmenu {
+  height: 24px;
+  display: inline-block;
+  border: 1px solid #808284;
+  margin-right: 8px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background-color: #ffffff;
+  overflow: hidden;
+  &:hover {
+    border: 1px solid #0379AE;
+  }
+  li {
+    border-right: 1px solid #666;
+    border-left: 1px solid #fff;
+    margin: 0;
+    padding: 0;
+    float: left;
+    display: block;
+    a {
+      padding: 0 9px;
+      line-height: 24px;
+      height: 24px;
+      color: #000;
+      font-weight: bold;
+      font-size: 12px;
+      display: block;
+    }
+    a:hover, a.active {
+    	background-color: #C7DFF0;
+      text-decoration: none;
+    }
+  }
+  li:first-child {
+    border-left: 0px;
+  }
+  li:last-child {
+    border-right: 0px;
+  }
+  li.disabled {
+    a {
+      color: silver;
+    }
+  }
+  li ul {
+    position: absolute;
+    background: white;
+    padding: 0;
+    width: 120px;
+    border: 1px solid #999;
+    margin-left: -1px;
+    box-shadow: 0 2px 5px #bbb;
+    li {
+      float: none;
+      display: block;
+      border: none;
+      text-align: left;
+      a {font-weight: normal;}
+      a:hover {background: #eee;}
+    }
+  }
+}
+
+.pagemenu {
+  background: $light-blue;
+  padding: 10px 15px;
+  div.part_title {
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-table;
+    padding: 0 15px 0 0;
+  }
+}
+
+
