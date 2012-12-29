@@ -10,4 +10,12 @@ en:
     index:
       add_sub_org: Add a Sub-Organization
       add_a_sub_org: Add new %{type_of_children}
-  
+  people:
+    index:
+      last_name: Last Name
+      first_name: First Name
+      middle_name: Middle Name
+      offices: Offices
+      add_person: "Add Person"
+    menu:
+      add_person: "Add Person"

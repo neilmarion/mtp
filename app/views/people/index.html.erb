@@ -8,26 +8,19 @@
 
 <table class="listing" cellpadding="0" cellspacing="0">
   <tr id="table_header">
-    <th class="checkbox_cell"><%= check_box_tag 'check_all_contacts', true, false, 'data-target' => '#new_contact_assignment', class: 'check_all_contacts', 'data-status' => @attr %></th>
-    <th><%= sort_link @q, :first_name, t('.first_name'), params %></th>
-    <th><%= sort_link @q, :last_name, t('.last_name'), params %></th>
-    <th><%= sort_link @q, :followup_status, t('general.status'), params %></th>
-    <th><%= sort_link @q, :gender, t('general.gender'), params %></th>
-    <th style='min-width:100px;'><%= sort_link @q, 'phone_numbers.number', t('.phone_number'), params %></th>
-    <th><%= sort_link @q, 'role_id', t('nav.roles'), params %></th>
-    <% @questions.each do |q| %>
-      <th class="<%= dom_id(q) %>">
-        <%= q.slug.present? ? q.slug : q.label %>
-        <%= link_to("(#{t('nav.hide')})", hide_survey_question_path(@organization.surveys.first, q), remote: true, method: :put, class: 'hide', 'data-class' => dom_id(q)) %>
-      </th>
-    <% end %>
-    <th><%= t('.surveys') %></th>
-    <th><%= sort_link @q, 'MAX(answer_sheets.updated_at)', t('.last_survey'), params %></th>
-    <th class="hidden_questions"><%= link_to "Hidden Questions ▾", "#", id: 'hidden_questions_link' %></th>
+    <th><%= t('.last_name') %></th>
+    <th><%= t('.first_name') %></th>
+    <th><%= t('.middle_name') %></th>
+    <th><%= t('.offices') %></th>
   </tr>
-  <tbody id="contacts_table">
+
+  <tbody id="people_table">
     <% @people.each do |person| %>
-      <%= render 'contacts/contact', person: person, questions: @questions, answers: @answers, assignments: @assignments %>
+      <%= render 'people/person', person: person %>
     <% end %>
   </tbody>
 </table>
+
+<div id="add_person_div" style="display:none" title="<%= t('.add_person') %>" class="fingerme">
+  <%= render 'add_person', person: Person.new %>
+</div>

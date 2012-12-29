@@ -1,0 +1,19 @@
+<%= fields_for person, {validators: {}} do |pf| %>
+<div class="customform contact_form">
+  <div class="sfield">
+    <div class="ls"><%= pf.label :last_name, t('people.index.last_name') %>:</div>
+    <div class="rs"><%= pf.text_field :last_name %></div>
+  </div>
+  <div class="sfield">
+    <div class="ls"><%= pf.label :first_name, t('people.index.first_name') %>:</div>
+    <div class="rs"><%= pf.text_field :first_name %></div>
+  </div>
+  <div class="sfield">
+    <div class="ls"><%= pf.label :middle_name, t('people.index.middle_name') %>:</div>
+    <div class="rs"><%= pf.text_field :middle_name %></div>
+  </div>
+  
+        
+</div>
+  
+<% end %>
