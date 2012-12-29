@@ -3,9 +3,9 @@
 
 en:
   general:
-    edit: "edit"
-    save_and_close: 'Save and close'
-    save_and_add: 'Save and add another'
+    edit: edit
+    save_and_close: Save and close
+    save_and_add: Save and add another
   organizations:
     index:
       add_sub_org: Add a Sub-Organization
@@ -16,6 +16,8 @@ en:
       first_name: First Name
       middle_name: Middle Name
       offices: Offices
-      add_person: "Add Person"
+      add_person: Add Person
     menu:
-      add_person: "Add Person"
+      add_person: Add Person
+    person_form:
+      offices: Offices

@@ -1,6 +1,9 @@
 class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
+  before_filter :get_offices, only: [:index, :create]
+  
+  
   def index
     @people = Person.all
 
@@ -41,6 +44,7 @@ class PeopleController < ApplicationController
   # POST /people.json
   def create
     @person = Person.new(params[:person])
+    @person.offices = [Office.find(params[:office_id])]
 
     respond_to do |format|
       if @person.save
@@ -79,5 +83,11 @@ class PeopleController < ApplicationController
       format.html { redirect_to people_url }
       format.json { head :no_content }
     end
+  end
+  
+  protected
+  
+  def get_offices
+    @offices = Office.all
   end
 end

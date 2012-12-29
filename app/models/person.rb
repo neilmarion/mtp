@@ -6,7 +6,6 @@ class Person < ActiveRecord::Base
   has_many :people_offices
   has_many :offices, :through => :people_offices
   
-  
   def name
     [first_name, middle_name, last_name].collect(&:to_s).join(' ')
   end

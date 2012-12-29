@@ -12,6 +12,12 @@
     <div class="ls"><%= pf.label :middle_name, t('people.index.middle_name') %>:</div>
     <div class="rs"><%= pf.text_field :middle_name %></div>
   </div>
+  <div class="sfield">
+    <div class="ls"><%= t('.offices')%></div>
+    <div class="rs">
+      <%= render 'people/offices_fields', no_remove: true %>
+    </div>
+  </div>
   
         
 </div>
