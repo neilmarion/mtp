@@ -30,3 +30,9 @@ if Office.all.empty?
   a.children.create(name: 'KADIWA')
   a.children.create(name: 'Binhi')
 end
+
+if Cfo.all.empty?
+  Cfo.create(name: 'Buklod')
+  Cfo.create(name: 'KADIWA')
+  Cfo.create(name: 'Binhi')
+end
