@@ -16,3 +16,8 @@ $ ->
           $(this).dialog('destroy')
           $('#new_person form')[0].reset()
     false
+
+  $('.person_row td:not(.checkbox_cell)').live 'click', ->
+    unless $('a', this)[0]?
+      tr = $(this).parent()
+      document.location = '/people/' + tr.attr('data-id')
