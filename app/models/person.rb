@@ -13,7 +13,7 @@ class Person < ActiveRecord::Base
   def office_names
     names = []
     offices.each do |o|
-      names += [get_office_names(o).reverse.join(" - ")]
+      names += [get_names_of_self_and_parents(o).reverse.join(" - ")]
     end
     names
   end
@@ -24,17 +24,6 @@ class Person < ActiveRecord::Base
   end
   
   protected
-  
-  def get_office_names(o)
-    office_names = [o.name]
-    if o.ancestry == nil
-      return [o.name]
-    else
-      office_names += get_office_names(o.parent)
-    end
-    
-    office_names
-  end
   
   def get_names_of_self_and_parents(o)
     return [] if o.nil?
