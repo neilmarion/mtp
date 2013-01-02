@@ -46,6 +46,7 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(params[:person])
     @person.offices = [Office.find(params[:office_id])]
+    @person.organization = Organization.find(params[:organization_id])
 
     respond_to do |format|
       if @person.save
