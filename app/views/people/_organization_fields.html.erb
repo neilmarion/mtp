@@ -1,0 +1,5 @@
+<div class="sfield organization_field">
+  <div id="organization_selects">
+    <%= select_tag "organization_id", options_from_collection_for_select(@organizations, :id, :name), include_blank: true, data_level: 0 %><br>
+  </div>
+</div>

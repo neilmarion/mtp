@@ -2,6 +2,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   before_filter :get_offices, only: [:index, :create]
+  before_filter :get_second_level_orgs, only: [:index, :create]
   
   
   def index
@@ -89,5 +90,9 @@ class PeopleController < ApplicationController
   
   def get_offices
     @offices = Office.all
+  end
+  
+  def get_second_level_orgs
+    @organizations = Organization.first.children
   end
 end

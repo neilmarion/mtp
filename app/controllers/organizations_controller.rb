@@ -71,6 +71,15 @@ class OrganizationsController < ApplicationController
       end
     end
   end
+  
+  def get_children
+    @organizations = Organization.find(params[:id]).children
+    
+    respond_to do |format|
+      format.json { render json: @organizations }
+      format.js # new.html.erb
+    end
+  end
 
   # DELETE /organizations/1
   # DELETE /organizations/1.json

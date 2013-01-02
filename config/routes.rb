@@ -2,7 +2,11 @@ Mtp::Application.routes.draw do
   resources :people
 
 
-  resources :organizations
+  resources :organizations do
+    collection do
+      get :get_children
+    end
+  end
 
 
   root :to => "people#index"
