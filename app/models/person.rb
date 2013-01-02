@@ -18,6 +18,11 @@ class Person < ActiveRecord::Base
     names
   end
   
+  def organization_names
+    names = []
+    get_names_of_self_and_parents(organization).reverse.join(" - ")
+  end
+  
   protected
   
   def get_office_names(o)
@@ -29,6 +34,18 @@ class Person < ActiveRecord::Base
     end
     
     office_names
+  end
+  
+  def get_names_of_self_and_parents(o)
+    return [] if o.nil?
+    names = [o.name]
+    if o.ancestry == nil
+      return [o.name]
+    else
+      names += get_names_of_self_and_parents(o.parent)
+    end
+    
+    names
   end
   
 end

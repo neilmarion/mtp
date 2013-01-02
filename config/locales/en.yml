@@ -16,6 +16,7 @@ en:
       first_name: First Name
       middle_name: Middle Name
       offices: Offices
+      organizations: Organizations
       add_person: Add Person
     menu:
       add_person: Add Person
