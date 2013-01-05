@@ -18,10 +18,10 @@ $ ->
           if data.length > 0
             t.removeAttr('id')
             t.removeAttr('name')
-            $('#office_selects').append('<select data_level='+$('#office_selects select').size()+' id="office_id" name="office_id"><option></option></select>')
+            $('#office_selects').append('<select data_level='+$('#office_selects select').size()+' id="office_ids_0" name="office_ids[0]"><option></option></select>')
             $.each data, (key, val) ->
-              $('#office_id').append('<option value='+val['id']+'>'+val['name']+'</option>')
+              $('#office_ids_0').append('<option value='+val['id']+'>'+val['name']+'</option>')
           else
-            t.attr('id', 'office_id')
-            t.attr('name', 'office_id')
+            t.attr('id', 'office_ids_0')
+            t.attr('name', 'office_ids[0]')
     

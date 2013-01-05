@@ -89,10 +89,6 @@ class PeopleController < ApplicationController
   
   protected
   
-  def get_offices
-    @offices = Office.all
-  end
-  
   def get_second_level_orgs
     @organizations = Organization.first.children
   end
