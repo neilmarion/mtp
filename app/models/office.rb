@@ -5,5 +5,9 @@ class Office < ActiveRecord::Base
   has_many :people, :through => :people_offices
   
   acts_as_tree
+
+  scope :roots, lambda { {
+    :conditions => ["ancestry IS NULL"]
+  } }
   
 end
