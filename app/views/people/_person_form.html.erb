@@ -16,6 +16,7 @@
     <div class="ls"><%= t('.offices')%></div>
     <div class="rs">
       <%= render 'people/offices_fields', no_remove: true %>
+      <%= link_to image_tag("add.png") + t('.add_an_office'), '#', id: 'add_an_office' %>
     </div>
   </div>
   <div class="sfield">
