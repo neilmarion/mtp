@@ -11,6 +11,7 @@ Mtp::Application.routes.draw do
   resources :offices do
     collection do
       get :get_children
+      get :get_roots
     end
   end
 

@@ -45,7 +45,8 @@ class PeopleController < ApplicationController
   # POST /people.json
   def create
     @person = Person.new(params[:person])
-    @person.offices = [Office.find(params[:office_id])]
+    puts params[:office_ids].collect{|_, v| v.to_i}.inspect
+    @person.offices = Office.find(  params[:office_ids].collect{|_, v| v.to_i}  )
     @person.organization = Organization.find(params[:organization_id])
 
     respond_to do |format|

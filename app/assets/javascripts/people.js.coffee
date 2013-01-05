@@ -3,10 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $('#add_an_office').live 'click', ->
-    $('#office_selects').append('hello')
-
-
   $('#people_controller a.add_person').live 'click', ->
     $('#new_person')[0].reset()
     $('#add_person_div').dialog

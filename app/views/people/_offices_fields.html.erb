@@ -1,6 +1,7 @@
 <div class="sfield office_field">
   <div id="office_selects">
-    <%= select_tag "office_ids[0]", options_from_collection_for_select(@offices, :id, :name), include_blank: true, data_level: 0 %><br>
-    
+    <div id="office_select[0]">
+      <%= select_tag "office_ids[0]", options_from_collection_for_select(@offices, :id, :name), include_blank: true, data_level: 0 %><br>
+    </div>
   </div>
 </div>
