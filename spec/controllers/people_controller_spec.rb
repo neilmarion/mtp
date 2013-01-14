@@ -61,10 +61,10 @@ describe PeopleController do
     end
     
     it "sorts all people alphabetically by last_name" do
-      get :index, {:q =>{:s => "last_name asc"}}, valid_session
+      get :index, {search: {meta_sort: => "last_name.asc"}}, valid_session
       assigns(:people).should eq([@person_2, @person_3, @person_1])
       
-      get :index, {:q =>{:s => "last_name desc"}}, valid_session
+      get :index, {search: {meta_sort: => "last_name.desc"}}, valid_session
       assigns(:people).should eq([@person_1, @person_3, @person_2])
     end
     
