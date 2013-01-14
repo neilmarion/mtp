@@ -6,6 +6,7 @@ en:
     edit: edit
     save_and_close: Save and close
     save_and_add: Save and add another
+    cant_be_blank: Can't be blank
   organizations:
     index:
       add_sub_org: Add a Sub-Organization

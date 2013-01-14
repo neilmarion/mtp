@@ -24,7 +24,7 @@ describe OrganizationsController do
   # Organization. As you add validations to Organization, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "name" => "MyString" }
+    { name: "Organization" }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -66,22 +66,22 @@ describe OrganizationsController do
   end
 
   describe "POST create" do
+    before(:each) do
+      @root_org = FactoryGirl.create(:organization, name: "ROOT")
+    end
+  
     describe "with valid params" do
+      
       it "creates a new Organization" do
         expect {
-          post :create, {:organization => valid_attributes}, valid_session
+          post :create, {organization: {name: "CHILD", parent_id: @root_org.id}}, valid_session
         }.to change(Organization, :count).by(1)
       end
 
       it "assigns a newly created organization as @organization" do
-        post :create, {:organization => valid_attributes}, valid_session
+        post :create, {organization: {name: "CHILD", parent_id: @root_org.id}}, valid_session
         assigns(:organization).should be_a(Organization)
         assigns(:organization).should be_persisted
-      end
-
-      it "redirects to the created organization" do
-        post :create, {:organization => valid_attributes}, valid_session
-        response.should redirect_to(Organization.last)
       end
     end
 
@@ -89,15 +89,12 @@ describe OrganizationsController do
       it "assigns a newly created but unsaved organization as @organization" do
         # Trigger the behavior that occurs when invalid params are submitted
         Organization.any_instance.stub(:save).and_return(false)
-        post :create, {:organization => { "name" => "invalid value" }}, valid_session
+        post :create, {organization: {parent_id: @root_org.id}}, valid_session
         assigns(:organization).should be_a_new(Organization)
       end
 
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Organization.any_instance.stub(:save).and_return(false)
-        post :create, {:organization => { "name" => "invalid value" }}, valid_session
-        response.should render_template("new")
+      it "renders the error message" do
+        pending
       end
     end
   end
