@@ -6,3 +6,7 @@ Processing by OrganizationsController#create as JS
 Started GET "/people?search%5Bmeta_sort%5D=last_name.asc" for 127.0.0.1 at 2013-01-14 14:47:29 +0800
 Processing by PeopleController#index as JS
   Parameters: {"search"=>{"meta_sort"=>"last_name.asc"}}
+
+Started POST "/people" for 127.0.0.1 at 2013-01-14 15:16:03 +0800
+Processing by PeopleController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MWA6WwbUVvvP5xZc0CtXF9Lvt8/KyVir9gdz6H/c5G4=", "add_another"=>"", "person"=>{"last_name"=>"Westbrook", "first_name"=>"Russel", "middle_name"=>"East"}, "office_ids"=>{"0"=>"14"}, "organization_id"=>"5", "commit"=>"Save and close"}

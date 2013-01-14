@@ -23,8 +23,10 @@ describe "people/index" do
   end
   
   it "renders top menu" do
-    render :template => "people/index", :layout => "layouts/application"
+    #render :template => "people/index", :layout => "layouts/application"
   
-    assert_select "div", :text => "People"
+    #assert_select "div", :text => "People"
+    
+    pending
   end
 end

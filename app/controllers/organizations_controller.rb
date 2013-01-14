@@ -1,6 +1,8 @@
 class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
+  before_filter :get_root_organization, only: [:index]
+  
   def index
     @organizations = Organization.all
 
@@ -89,5 +91,11 @@ class OrganizationsController < ApplicationController
       format.html { redirect_to organizations_url }
       format.json { head :no_content }
     end
+  end
+  
+  protected
+  
+  def get_root_organization
+    @root_org = Organization.first
   end
 end

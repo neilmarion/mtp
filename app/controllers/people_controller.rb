@@ -47,19 +47,13 @@ class PeopleController < ApplicationController
   # POST /people.json
   def create
     @person = Person.new(params[:person])
-    
-    begin #you must change this!
-      @person.offices = Office.find(  params[:office_ids].collect{|_, v| v.to_i}  )
-      @person.organization = Organization.find(params[:organization_id])
-    rescue
-      format.js
-      format.json { render json: @person.errors, status: :unprocessable_entity }
-    end
 
     respond_to do |format|
       if @person.save
-        format.js
-        format.json { render json: @person, status: :created, location: @person }
+        @person.offices = Office.find(  params[:office_ids].collect{|_, v| v.to_i}  )
+        @person.organization = Organization.find(params[:organization_id])
+        format.js #you must change this!
+        format.json { render json: @person, status: :created, location: @person }  #you must change this!
       else
         format.js
         format.json { render json: @person.errors, status: :unprocessable_entity }

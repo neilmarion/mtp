@@ -6,6 +6,8 @@ class Person < ActiveRecord::Base
   has_many :people_offices
   has_many :offices, :through => :people_offices
   
+  validates_presence_of :first_name, :last_name, message: "can't be blank"
+  
   def name
     [first_name, middle_name, last_name].collect(&:to_s).join(' ')
   end
