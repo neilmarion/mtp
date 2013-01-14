@@ -6,7 +6,8 @@ class PeopleController < ApplicationController
   
   
   def index
-    @people = Person.all.sort_by(&:last_name)
+    @q = Person.search(params[:search])
+    @people = @q.all
 
     respond_to do |format|
       format.html # index.html.erb
