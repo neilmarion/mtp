@@ -6,7 +6,7 @@ class PeopleController < ApplicationController
   
   
   def index
-    @people = Person.all
+    @people = Person.all.sort_by(&:last_name)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,9 +45,14 @@ class PeopleController < ApplicationController
   # POST /people.json
   def create
     @person = Person.new(params[:person])
-    puts params[:office_ids].collect{|_, v| v.to_i}.inspect
-    @person.offices = Office.find(  params[:office_ids].collect{|_, v| v.to_i}  )
-    @person.organization = Organization.find(params[:organization_id])
+    
+    begin #you must change this!
+      @person.offices = Office.find(  params[:office_ids].collect{|_, v| v.to_i}  )
+      @person.organization = Organization.find(params[:organization_id])
+    rescue
+      format.js
+      format.json { render json: @person.errors, status: :unprocessable_entity }
+    end
 
     respond_to do |format|
       if @person.save

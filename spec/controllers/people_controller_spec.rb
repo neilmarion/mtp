@@ -24,8 +24,11 @@ describe PeopleController do
   # Person. As you add validations to Person, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    FactoryGirl.create(:organization)
-    {first_name: "Neil Marion", middle_name: "Flores", last_name: "Dela Cruz", offices_attributes: {"0" => {office: {id: Office.choir.to_param}}}, organization_attributes: {organization: {id: Organization.first.id}}}
+    {first_name: "First Name", middle_name: "Middle Name", last_name: "Last Name", offices_attributes: {"0" => {office: {id: @office.id}}}, organization_attributes: {organization: {id: @organization}}}
+  end
+  
+  def invalid_attributes
+    {}
   end
 
   # This should return the minimal set of values that should be in the session
@@ -33,6 +36,11 @@ describe PeopleController do
   # PeopleController. Be sure to keep this updated too.
   def valid_session
     {}
+  end
+  
+  before(:each) do
+    @office = FactoryGirl.create(:office)
+    @organization = FactoryGirl.create(:organization)
   end
 
   describe "index" do
@@ -142,15 +150,12 @@ describe PeopleController do
       it "assigns a newly created but unsaved person as @person" do
         # Trigger the behavior that occurs when invalid params are submitted
         Person.any_instance.stub(:save).and_return(false)
-        post :create, {:person => { "last_name" => "invalid value" }}, valid_session
+        post :create, {person: invalid_attributes }, valid_session
         assigns(:person).should be_a_new(Person)
       end
 
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Person.any_instance.stub(:save).and_return(false)
-        post :create, {:person => { "last_name" => "invalid value" }}, valid_session
-        response.should render_template("new")
+      it "outputs the error messages" do
+        pending
       end
     end
   end
