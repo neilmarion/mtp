@@ -30,11 +30,14 @@ class Person < ActiveRecord::Base
   def get_names_of_self_and_parents(o)
     return [] if o.nil?
     names = [o.name]
+    
     if o.ancestry == nil
       return [o.name]
     else
       names += get_names_of_self_and_parents(o.parent)
     end
+    
+    
     
     names
   end

@@ -4,12 +4,12 @@ describe "People", :js => :true do
   before(:each) do
     @office = FactoryGirl.create(:office)
     @organization = FactoryGirl.create(:organization)
-    @child = FactoryGirl.create(:organization, parent: @organization)
+    @child_organization = FactoryGirl.create(:organization, parent: @organization)
   end
-  
+
   describe "GET /people" do
     before(:each) do
-      @person = FactoryGirl.create(:person, organization: @child, offices: [@office])
+      @person = FactoryGirl.create(:person, organization: @child_organization, offices: [@office])
     end
   
     it "displays people" do
@@ -29,9 +29,13 @@ describe "People", :js => :true do
     
     it "creates people" do
       click_link "Add Person"
+      fill_in "First Name", :with => "First Name"
       fill_in "Last Name", :with => "Last Name"
-      select(@office.name, :from => "office_ids_0")
-      click_link "Add an Office"
+      fill_in "Middle Name", :with => "Middle Name"
+      select @office.name, :from => "office_ids_0"
+      #click_link "Add an Office"
+      select @child_organization.name, :from => "organization_id"
+      click_button "Save and close"
     end
   end
 end
