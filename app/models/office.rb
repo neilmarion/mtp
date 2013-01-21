@@ -7,9 +7,5 @@ class Office < ActiveRecord::Base
   acts_as_tree
   
   validates_presence_of :name, message: "can't be blank"
-
-  scope :roots, lambda { {
-    :conditions => ["ancestry IS NULL"]
-  } }
   
 end

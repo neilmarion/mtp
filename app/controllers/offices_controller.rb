@@ -7,13 +7,5 @@ class OfficesController < ApplicationController
       format.js
     end
   end
-  
-  def get_roots
-    @offices = Office.roots
-    
-    respond_to do |format|
-      format.json { render json: @offices }
-      format.js
-    end
-  end
+
 end
