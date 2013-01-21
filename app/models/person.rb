@@ -1,10 +1,12 @@
 class Person < ActiveRecord::Base
-  attr_accessible :birth_date, :first_name, :last_name, :middle_name, :office_id, :organization_id, :cfo_id
+  attr_accessible :birth_date, :first_name, :last_name, :middle_name, :office_id, :organization_id, :cfo_id, :people_offices_attributes
   
   belongs_to :organization
   belongs_to :cfo
   has_many :people_offices
   has_many :offices, :through => :people_offices
+  
+  accepts_nested_attributes_for :people_offices, :allow_destroy => true
   
   validates_presence_of :first_name, :last_name, message: "can't be blank"
   

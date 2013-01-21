@@ -32,7 +32,7 @@ describe "People", :js => :true do
       fill_in "First Name", :with => "First Name"
       fill_in "Last Name", :with => "Last Name"
       fill_in "Middle Name", :with => "Middle Name"
-      select @office.name, :from => "office_ids_0"
+      select @office.name, :from => "person_people_offices_attributes_0_office_id"
       #click_link "Add an Office"
       select @child_organization.name, :from => "organization_id"
       click_button "Save and close"

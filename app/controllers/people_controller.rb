@@ -8,6 +8,8 @@ class PeopleController < ApplicationController
   def index
     @q = Person.search(params[:search])
     @people = @q.all
+    @person = Person.new
+    5.times { @person.people_offices.build }
 
     respond_to do |format|
       format.html # index.html.erb
@@ -51,8 +53,9 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.save
-        @person.offices = Office.find(  params[:office_ids].collect{|_, v| v.to_i}  )
+        #@person.offices = Office.find(  params[:office_ids].collect{|_, v| v.to_i}  )
         @person.update_attributes({:organization_id => params[:organization_id]})
+        PeopleOffice.all
         format.js #you must change this!
         format.json { render json: @person, status: :created, location: @person }  #you must change this!
       else
