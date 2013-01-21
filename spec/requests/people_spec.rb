@@ -36,6 +36,7 @@ describe "People", :js => :true do
       #click_link "Add an Office"
       select @child_organization.name, :from => "person_organization_id"
       click_button "Save and close"
+      sleep 4
     end
   end
 end
