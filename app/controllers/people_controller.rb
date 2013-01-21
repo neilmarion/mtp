@@ -50,12 +50,8 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(params[:person])
 
-
     respond_to do |format|
       if @person.save
-        #@person.offices = Office.find(  params[:office_ids].collect{|_, v| v.to_i}  )
-        @person.update_attributes({:organization_id => params[:organization_id]})
-        PeopleOffice.all
         format.js #you must change this!
         format.json { render json: @person, status: :created, location: @person }  #you must change this!
       else
