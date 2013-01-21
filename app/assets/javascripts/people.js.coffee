@@ -25,7 +25,7 @@ $ ->
   $('#add_person_div .save').live 'click', ->
       form = $(this).closest('form')
       if $('#person_first_name', form).val() == ''
-        alert('At a minimum you need to provide a first name.')
+        alert(I18n.t('errors.first_name_missing'))
         return false
       if $(this).hasClass('save_and_more')
         $('#add_another').val('true')
