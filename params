@@ -10,3 +10,6 @@ Processing by PeopleController#index as JS
 Started POST "/people" for 127.0.0.1 at 2013-01-14 15:16:03 +0800
 Processing by PeopleController#create as JS
   Parameters: {"utf8"=>"✓", "authenticity_token"=>"MWA6WwbUVvvP5xZc0CtXF9Lvt8/KyVir9gdz6H/c5G4=", "add_another"=>"", "person"=>{"last_name"=>"Westbrook", "first_name"=>"Russel", "middle_name"=>"East"}, "office_ids"=>{"0"=>"14"}, "organization_id"=>"5", "commit"=>"Save and close"}
+
+Processing by PeopleController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nj+w3yKfWcqOGp3O0ysuqzqpJFtlJsQdoDp0mrhBNS0=", "add_another"=>"", "person"=>{"last_name"=>"Guasch", "first_name"=>"Patrick", "middle_name"=>"Menorca", "people_offices_attributes"=>{"0"=>{"office_id"=>"4"}}, "organization_id"=>"6"}, "commit"=>"Save and close"}

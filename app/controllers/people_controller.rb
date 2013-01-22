@@ -29,17 +29,6 @@ class PeopleController < ApplicationController
     end
   end
 
-  # GET /people/new
-  # GET /people/new.json
-  def new
-    @person = Person.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @person }
-    end
-  end
-
   # GET /people/1/edit
   def edit
     @person = Person.find(params[:id])
@@ -52,8 +41,8 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.save
-        format.js #you must change this!
-        format.json { render json: @person, status: :created, location: @person }  #you must change this!
+        format.js
+        format.json { render json: @person, status: :created, location: @person }
       else
         format.js
         format.json { render json: @person.errors, status: :unprocessable_entity }

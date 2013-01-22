@@ -8,7 +8,7 @@ class Person < ActiveRecord::Base
   
   accepts_nested_attributes_for :people_offices, :allow_destroy => true
   
-  validates_presence_of :first_name, :last_name, message: "can't be blank"
+  validates_presence_of :first_name, :last_name, :organization, message: "can't be blank"
   
   def name
     [first_name, middle_name, last_name].collect(&:to_s).join(' ')
@@ -38,8 +38,6 @@ class Person < ActiveRecord::Base
     else
       names += get_names_of_self_and_parents(o.parent)
     end
-    
-    
     
     names
   end
