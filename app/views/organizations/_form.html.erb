@@ -15,7 +15,17 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="item formactions">
+    <%= f.submit %><%= link_to(t('.back'), :back, :class=> "cancel")%>
+  </div>
+  
+  <div class="formactions dangerzone">
+    <h3><%= t('.danger_zone') %></h3>
+    <div class="content">
+    <p><%= t('.danger_explanation') %></p>
+    <hr/>
+    <p style="margin-top: 15px;"><%= link_to(t('.delete'), organization_path(@organization), method: :delete, class: 'delete cleangray', data: { confirm: t('.delete_confirm', type: @organization.parent.type_of_children) })%></p>
+    </div>
+      
   </div>
 <% end %>

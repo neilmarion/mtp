@@ -4,7 +4,8 @@ class OrganizationsController < ApplicationController
   before_filter :get_root_organization, only: [:index]
   
   def index
-    @organizations = Organization.all
+    @organizations = @root_org.children
+    @organization = Organization.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,21 +16,14 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.json
   def show
-    @organization = Organization.find(params[:id])
+    begin
+      @organization = Organization.find params[:id]
+    rescue ActiveRecord::RecordNotFound => e
+      @organization = nil
+    end
 
     respond_to do |format|
       format.js
-      format.json { render json: @organization }
-    end
-  end
-
-  # GET /organizations/new
-  # GET /organizations/new.json
-  def new
-    @organization = Organization.new
-
-    respond_to do |format|
-      format.html # new.html.erb
       format.json { render json: @organization }
     end
   end

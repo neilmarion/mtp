@@ -13,6 +13,11 @@ en:
     index:
       add_sub_org: Add a Sub-Organization
       add_a_sub_org: Add new %{type_of_children}
+    form:
+      danger_zone: Danger Zone
+      danger_explanation: Deleting this Organization will also delete all sub organizations under this organization. Deleting an organization cannot be undone! Be certain that you want to delete this item before proceeding
+      delete_confirm: "Are you really really sure you want to delete this %{type}? There's no going back, and all the related data will be deleted!"
+      delete: Delete Organization
   people:
     index:
       last_name: Last Name

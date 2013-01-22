@@ -34,34 +34,43 @@ describe OrganizationsController do
     {}
   end
 
+  before(:each) do
+    @org_1 = FactoryGirl.create(:organization)
+    @org_2 = FactoryGirl.create(:organization, parent: @org_1)
+    @org_3 = FactoryGirl.create(:organization, parent: @org_1)
+    @org_4 = FactoryGirl.create(:organization, parent: @org_2)
+    @org_5 = FactoryGirl.create(:organization, parent: @org_2)
+    
+  end
+
   describe "GET index" do
-    it "assigns all organizations as @organizations" do
-      organization = Organization.create! valid_attributes
+    it "assigns all 2nd level organizations as @organizations" do
       get :index, {}, valid_session
-      assigns(:organizations).should eq([organization])
+      assigns(:organizations).should eq([@org_2, @org_3])
+    end
+    
+    it "already creates a new Organization model" do
+      get :index, {}, valid_session
+      assigns(:organization).should_not eq nil
     end
   end
 
   describe "GET show" do
     it "assigns the requested organization as @organization" do
-      organization = Organization.create! valid_attributes
-      get :show, {:id => organization.to_param}, valid_session
-      assigns(:organization).should eq(organization)
+      get :show, {:id => @org_1.to_param}, valid_session
+      assigns(:organization).should eq(@org_1)
     end
-  end
-
-  describe "GET new" do
-    it "assigns a new organization as @organization" do
-      get :new, {}, valid_session
-      assigns(:organization).should be_a_new(Organization)
+    
+    it "does output an error if id is non-existent" do
+      get :show, {:id => 0}, valid_session
+      assigns(:organization).should eq nil
     end
   end
 
   describe "GET edit" do
     it "assigns the requested organization as @organization" do
-      organization = Organization.create! valid_attributes
-      get :edit, {:id => organization.to_param}, valid_session
-      assigns(:organization).should eq(organization)
+      get :edit, {:id => @org_1.to_param}, valid_session
+      assigns(:organization).should eq(@org_1)
     end
   end
 
