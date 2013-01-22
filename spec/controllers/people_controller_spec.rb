@@ -93,13 +93,6 @@ describe PeopleController do
     end
   end
 
-  describe "GET new" do
-    it "assigns a new person as @person" do
-      get :new, {}, valid_session
-      assigns(:person).should be_a_new(Person)
-    end
-  end
-
   describe "GET edit" do
     it "assigns the requested person as @person" do
       person = FactoryGirl.create(:person)
