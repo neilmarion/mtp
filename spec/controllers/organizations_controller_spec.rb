@@ -153,16 +153,20 @@ describe OrganizationsController do
   end
 
   describe "DELETE destroy" do
-    it "destroys the requested organization" do
-      organization = Organization.create! valid_attributes
+    before(:each) do
+      FactoryGirl.create(:person, organization: @org_2)
+    end
+  
+    it "destroys the requested organization and all its children and members" do
       expect {
-        delete :destroy, {:id => organization.to_param}, valid_session
-      }.to change(Organization, :count).by(-1)
+        expect {
+          delete :destroy, {:id => @org_2.to_param}, valid_session
+        }.to change(Organization, :count).by(-3)
+      }.to change(Person, :count).by(-1)
     end
 
     it "redirects to the organizations list" do
-      organization = Organization.create! valid_attributes
-      delete :destroy, {:id => organization.to_param}, valid_session
+      delete :destroy, {:id => @org_2.to_param}, valid_session
       response.should redirect_to(organizations_url)
     end
   end

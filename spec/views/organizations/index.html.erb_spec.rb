@@ -7,6 +7,12 @@ describe "organizations/index" do
         :name => "Root", :type_of_children => "Child"
       ),
     )
+    
+    assign(:organization,
+      stub_model(Organization,
+        :name => "", :type_of_children => ""
+      ),
+    )
   
     assign(:organizations, [
       stub_model(Organization,

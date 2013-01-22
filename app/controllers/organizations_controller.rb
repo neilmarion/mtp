@@ -79,7 +79,9 @@ class OrganizationsController < ApplicationController
   # DELETE /organizations/1.json
   def destroy
     @organization = Organization.find(params[:id])
+    @organization.people.collect(&:destroy)
     @organization.destroy
+    
 
     respond_to do |format|
       format.html { redirect_to organizations_url }

@@ -26,6 +26,5 @@
     <hr/>
     <p style="margin-top: 15px;"><%= link_to(t('.delete'), organization_path(@organization), method: :delete, class: 'delete cleangray', data: { confirm: t('.delete_confirm', type: @organization.parent.type_of_children) })%></p>
     </div>
-      
   </div>
 <% end %>
