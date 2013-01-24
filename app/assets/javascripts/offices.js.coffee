@@ -21,7 +21,7 @@ $ ->
           if data.length > 0
             t.removeAttr('id')
             t.removeAttr('name')
-            parent.append('<select data_level='+parent.find('select').size()+' id="person_people_offices_attributes_'+parent_index+'_office_id" name="person[people_offices_attributes]['+parent_index+'][office_id]"><option></option></select>')
+            parent.append('<select data_level='+parent.find('select').size()+' id="person_people_offices_attributes_'+parent_index+'_office_id" name="person[people_offices_attributes]['+parent_index+'][office_id]"><option></option></select><br>')
             $.each data, (key, val) ->
               $('#person_people_offices_attributes_'+parent_index+'_office_id').append('<option value='+val['id']+'>'+val['name']+'</option>')
           else
@@ -37,7 +37,7 @@ $ ->
         url: '/offices/get_roots?format=json',
         dataType: 'json',
         success: (data) ->
-          $('#office_selects').append('<div id='+new_id+' class="office_select"><select data_level=0 id="person_people_offices_attributes_'+s+'_office_id" name="person[people_offices_attributes]['+s+'][office_id]"><option></option></select></div>')
+          $('#office_selects').append('<div id='+new_id+' class="office_select"><select data_level=0 id="person_people_offices_attributes_'+s+'_office_id" name="person[people_offices_attributes]['+s+'][office_id]"><option></option></select><br></div>')
           $.each data, (key, val) ->
             $('#person_people_offices_attributes_'+s+'_office_id').append('<option value='+val['id']+'>'+val['name']+'</option>')
     
