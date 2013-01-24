@@ -3,7 +3,13 @@
 </div>
 
 <div id="add_person_form">
-  <%= form_for person, url: people_path, method: :post, remote: true do |f| %>
+  <% url = params[:action] == 'edit' ? person_path : people_path
+     method = params[:action] == 'edit' ? :put : :post
+     remote = params[:action] == 'edit' ? false  : true
+   %>
+
+  <%= form_for person, url: url, method: method, remote: remote do |f| %>
+    <%= params[:action] %>
     <% if flash[:error] %>
       <div class="flash error"><%= raw flash[:error] %></div>
     <% end %>

@@ -10,6 +10,15 @@ describe "people/edit" do
       :organization_id => 1,
       :birth_date => "MyString"
     ))
+    
+    
+    
+    @org_0 = FactoryGirl.create(:organization)
+    FactoryGirl.create(:organization, parent: @org_0)
+    assign(:organizations, @org_0.children)
+    
+    assign(:offices, [FactoryGirl.create(:office)])
+    
   end
 
   it "renders the edit person form" do
@@ -20,9 +29,8 @@ describe "people/edit" do
       assert_select "input#person_last_name", :name => "person[last_name]"
       assert_select "input#person_first_name", :name => "person[first_name]"
       assert_select "input#person_middle_name", :name => "person[middle_name]"
-      assert_select "input#person_office_id", :name => "person[office_id]"
-      assert_select "input#person_organization_id", :name => "person[organization_id]"
-      assert_select "input#person_birth_date", :name => "person[birth_date]"
+      assert_select "select#person_people_offices_attributes_0_office_id", :name => "person[people_offices_attributes][0][office_id]"
+      assert_select "select#person_organization_id", :name => "person[organization_id]"
     end
   end
 end

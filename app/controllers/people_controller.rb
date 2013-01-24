@@ -1,8 +1,8 @@
 class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
-  before_filter :get_parent_offices, only: [:index, :create]
-  before_filter :get_second_level_orgs, only: [:index, :create]
+  before_filter :get_parent_offices, only: [:index, :create, :edit]
+  before_filter :get_second_level_orgs, only: [:index, :create, :edit]
   
   
   def index
