@@ -4,6 +4,7 @@
   <td class="middle_name"><%= person.middle_name %></td>
   <td class="offices"><%= person.office_names.join(', ') %></td>
   <td class="organizations"><%= person.organization_names %></td>
+  <td><%= person.cfo.name if person.cfo %></td>
   <td class="controls" align="right">
     <%= link_to(image_tag(asset_path('delete.png')), person_path(person), :method => :delete, :remote => true, :class => "icon delete tipit", :title => t('people.index.delete_person')) %>      
   </td>
