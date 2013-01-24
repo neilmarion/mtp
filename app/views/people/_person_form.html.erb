@@ -14,16 +14,16 @@
     <div class="rs"><%= pf.text_field :middle_name %></div>
   </div>
     
-  <div class="sfield">
+  <div class="sfield field">
     <div class="ls"><%= t('.offices')%></div>
-    <div class="rs field">
+    <div class="rs">
       <%= render 'people/offices_fields', no_remove: true, person: person %>
     </div>
   </div>
   
-  <div class="sfield">
+  <div class="sfield field">
     <div class="ls"><%= t('.cfo')%></div>
-    <div class="rs field">
+    <div class="rs">
       <% Cfo.all.each do |cfo| %>
         <%= pf.radio_button :cfo_id, cfo.id %>
         <%= pf.label :contactmethod_email, cfo.name %>
@@ -32,7 +32,7 @@
     </div>
   </div>
   
-  <div class="sfield">
+  <div class="sfield field">
     <div class="ls"><%= t('.organization')%></div>
     <div class="rs">
       <%= render 'people/organization_fields', no_remove: true, person: person %>
