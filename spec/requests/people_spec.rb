@@ -38,4 +38,19 @@ describe "People", :js => :true do
       click_button "Save and close"
     end
   end
+  
+  describe "DELETE /people" do
+    before(:each) do
+      @person = FactoryGirl.create(:person, organization: @child_organization, offices: [@office])
+      visit people_path
+    end
+  
+    it "deletes people" do
+      expect {
+        my_link = find(:xpath, "//a[contains(@href,'/people/1')]")
+        my_link.click
+        page.driver.browser.switch_to.alert.accept
+      }.to change(Person, :count).by -1
+    end
+  end
 end
