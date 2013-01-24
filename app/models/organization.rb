@@ -5,6 +5,6 @@ class Organization < ActiveRecord::Base
   
   acts_as_tree
   
-  has_many :people
+  has_many :people, :dependent => :destroy
   validates_presence_of :name, message: "can't be blank"
 end
