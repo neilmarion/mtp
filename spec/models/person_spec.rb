@@ -16,7 +16,7 @@ describe Person do
             offices = Array.new
             organization = FactoryGirl.create(:organization)
             2.times { offices << FactoryGirl.create(:office) }
-            @person = FactoryGirl.create(:person, offices: offices, organization: organization)
+            @person = FactoryGirl.create(:person, first_name: "Neil Marion", middle_name: "Flores", last_name: "dela Cruz",offices: offices, organization: organization)
           }.to change(Organization, :count).by(1)
         }.to change(Office, :count).by(2)
       }.to change(Person, :count).by(1)
@@ -26,6 +26,10 @@ describe Person do
     expect {
       @person.destroy
     }.to change(PeopleOffice, :count).by(-2)
+  end
+  
+  it "has name (fullname)" do
+    @person.name.should eq "Neil Marion Flores dela Cruz"
   end
   
 end
