@@ -1,5 +1,5 @@
 <div class="sfield organization_field">
-  <div id="organization_selects">
+  <div id="organization_selects" class="field">
     <% if person.new_record? || person.organization.nil? %>
       <%= select_tag "person[organization_id]", options_from_collection_for_select(@organizations, :id, :name), include_blank: true, data_level: 0 %><br>
     <% else %>

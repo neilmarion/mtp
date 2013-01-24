@@ -1,5 +1,6 @@
 <%= fields_for person, {validators: {}} do |pf| %>
 <div class="customform contact_form">
+  
   <div class="sfield">
     <div class="ls"><%= pf.label :last_name, t('people.index.last_name') %>:</div>
     <div class="rs"><%= pf.text_field :last_name %></div>
@@ -12,20 +13,21 @@
     <div class="ls"><%= pf.label :middle_name, t('people.index.middle_name') %>:</div>
     <div class="rs"><%= pf.text_field :middle_name %></div>
   </div>
+    
   <div class="sfield">
     <div class="ls"><%= t('.offices')%></div>
-    <div class="rs">
+    <div class="rs field">
       <%= render 'people/offices_fields', no_remove: true, person: person %>
-      <%= link_to image_tag("add.png") + t('.add_an_office'), '#', id: 'add_an_office' %>
     </div>
   </div>
   
   <div class="sfield">
     <div class="ls"><%= t('.cfo')%></div>
-    <div class="rs">
+    <div class="rs field">
       <% Cfo.all.each do |cfo| %>
         <%= pf.radio_button :cfo_id, cfo.id %>
         <%= pf.label :contactmethod_email, cfo.name %>
+        <br>
       <% end %>
     </div>
   </div>

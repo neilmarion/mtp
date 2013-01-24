@@ -32,5 +32,6 @@ en:
       add_person: Add Person
     person_form:
       offices: Offices
-      add_an_office: Add an Office
       cfo: Christian Family Organization
+    offices_fields:
+      add_an_office: " Add an Office"

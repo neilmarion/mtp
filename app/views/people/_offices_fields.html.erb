@@ -2,14 +2,14 @@
   <div id="office_selects">
     <% if person.new_record? || person.offices.blank?%>
       <div id="office_select[0]" class="office_select">
-        <%= select_tag "person[people_offices_attributes][0][office_id]", options_from_collection_for_select(@offices, :id, :name), include_blank: true, data_level: 0 %><br>
+        <%= select_tag "person[people_offices_attributes][0][office_id]", options_from_collection_for_select(@offices, :id, :name), include_blank: true, data_level: 0 %>
       </div>
     <% else %>
       <% person.offices.each_with_index do |office, index| %>
         <div id="office_select[<%= index %>]" class="office_select">
           <% ancestor_no = office.ancestors.count %>
           <% office.ancestors.each_with_index do |ancestor, index| %>
-              <%= select_tag nil, options_from_collection_for_select(ancestor.siblings, :id, :name, ancestor.id), include_blank: true, data_level: index %><br>
+              <%= select_tag nil, options_from_collection_for_select(ancestor.siblings, :id, :name, ancestor.id), include_blank: true, data_level: index %>
           <% end %>
           
           <%= select_tag "person[people_offices_attributes][#{index}][office_id]", options_from_collection_for_select(office.siblings, :id, :name, office.id), include_blank: true, data_level: ancestor_no %>
@@ -18,4 +18,5 @@
     <% end %>
     
   </div>
+  <%= link_to image_tag("add.png") + t('.add_an_office'), '#', id: 'add_an_office' %>
 </div>
