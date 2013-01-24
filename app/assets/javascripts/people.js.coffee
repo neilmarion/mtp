@@ -34,3 +34,7 @@ $ ->
       false
       
     true
+    
+  $('.controls a.delete').live 'click', (e)->
+    if confirm I18n.t('people.index.destroy_confirm')
+      $(this).closest('tr').fadeOut()

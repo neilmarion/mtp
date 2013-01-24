@@ -26,6 +26,8 @@ en:
       offices: Offices
       organizations: Organizations
       add_person: Add Person
+      destroy_confirm: Are you sure you want to delete this person? If not, click cancel.
+      delete_person: Delete Person
     menu:
       add_person: Add Person
     person_form:
