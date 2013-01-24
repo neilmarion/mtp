@@ -3,7 +3,7 @@ class Person < ActiveRecord::Base
   
   belongs_to :organization
   belongs_to :cfo
-  has_many :people_offices
+  has_many :people_offices, :dependent => :destroy
   has_many :offices, :through => :people_offices
   
   accepts_nested_attributes_for :people_offices, :allow_destroy => true
