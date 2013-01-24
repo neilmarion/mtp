@@ -54,6 +54,7 @@ class PeopleController < ApplicationController
   # PUT /people/1.json
   def update
     @person = Person.find(params[:id])
+    @person.delete_offices
 
     respond_to do |format|
       if @person.update_attributes(params[:person])

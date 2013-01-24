@@ -15,7 +15,7 @@
   <div class="sfield">
     <div class="ls"><%= t('.offices')%></div>
     <div class="rs">
-      <%= render 'people/offices_fields', no_remove: true %>
+      <%= render 'people/offices_fields', no_remove: true, person: person %>
       <%= link_to image_tag("add.png") + t('.add_an_office'), '#', id: 'add_an_office' %>
     </div>
   </div>
@@ -23,7 +23,7 @@
   <div class="sfield">
     <div class="ls"><%= t('.organization')%></div>
     <div class="rs">
-      <%= render 'people/organization_fields', no_remove: true %>
+      <%= render 'people/organization_fields', no_remove: true, person: person %>
     </div>
   </div>
   

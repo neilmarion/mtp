@@ -27,6 +27,10 @@ class Person < ActiveRecord::Base
     get_names_of_self_and_parents(organization).reverse.join(" - ")
   end
   
+  def delete_offices
+    people_offices.collect(&:destroy)
+  end
+  
   protected
   
   def get_names_of_self_and_parents(o)

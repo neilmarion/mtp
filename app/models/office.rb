@@ -8,4 +8,8 @@ class Office < ActiveRecord::Base
   
   validates_presence_of :name, message: "can't be blank"
   
+  def get_parents
+    
+  end
+  
 end

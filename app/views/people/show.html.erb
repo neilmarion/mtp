@@ -1,33 +1,14 @@
-<h1></h>
-
-
-<p id="notice"><%= notice %></p>
+<h1>
+  <%= @person.name %>
+</h1>
 
 <p>
-  <b>Last name:</b>
-  <%= @person.last_name %>
+  <%= @person.office_names.join(', ') %>
 </p>
 
 <p>
-  <b>First name:</b>
-  <%= @person.first_name %>
+  <%= @person.organization_names %>
 </p>
-
-<p>
-  <b>Middle name:</b>
-  <%= @person.middle_name %>
-</p>
-
-<p>
-  <b>Organization:</b>
-  <%= @person.organization_id %>
-</p>
-
-<p>
-  <b>Birth date:</b>
-  <%= @person.birth_date %>
-</p>
-
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>
