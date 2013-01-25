@@ -5,6 +5,7 @@ class Person < ActiveRecord::Base
   belongs_to :cfo
   has_many :people_offices, :dependent => :destroy
   has_many :offices, :through => :people_offices
+  has_many :addresses, :dependent => :destroy
   
   accepts_nested_attributes_for :people_offices, :allow_destroy => true
   

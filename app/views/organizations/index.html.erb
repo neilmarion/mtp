@@ -5,7 +5,7 @@
     <p>From this screen you can edit, delete or rearrange your organizations. Clicking "Add new organization"<br/>will do a quick add by name. To edit more details, permissions and other info, select "edit" from the item's<br/>name on the list.</p>
   </div>
   
-  <h2><%= @root_org.name %> <small><%= link_to(t('general.edit'), edit_organization_path(@root_org)) %></small></h2>
+  <h2><%= @root_org.name %></h2>
   
   <% if @root_org.children.length == 0 %>
     <br/><%= link_to(t('.add_sub_org', type_of_children: @root_org.type_of_children.pluralize), '#', id: 'add_sub_orgs') %>

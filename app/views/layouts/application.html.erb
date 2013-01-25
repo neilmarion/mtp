@@ -39,8 +39,7 @@
         </ul>
       </div>
     </div>
-    <div id="main">
-    
+    <div id=<%= "main" unless params[:controller] == "organizations" %> >
       <%= yield %>
       
     </div>
