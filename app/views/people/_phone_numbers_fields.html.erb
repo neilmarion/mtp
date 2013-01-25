@@ -1,0 +1,14 @@
+<div id="phone_number_fields">
+    <% if person.new_record? || person.phone_numbers.blank?%>
+      <div id="phone_numbers[0]">
+        <%= text_field_tag "person[phone_numbers_attributes][0][phone_number]" %>
+      </div>
+    <% else %>
+      <% person.phone_numbers.each_with_index do |phone_number, index| %>
+        <div id="phone_numbers[<%= index %>]">
+          <%= text_field_tag "person[phone_numbers_attributes][#{index}][phone_number]", phone_number.phone_number %>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+<%= link_to image_tag("add.png") + t('.add_a_phone_number'), '#', id: 'add_a_phone_number' %>

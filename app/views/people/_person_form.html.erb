@@ -1,7 +1,7 @@
 <%= fields_for person, {validators: {}} do |pf| %>
 <div class="customform contact_form">
   
-  <div class="long_field">
+  <div class="field">
     <div class="sfield">
       <div class="ls"><%= pf.label :last_name, t('people.index.last_name') %>:</div>
       <div class="rs"><%= pf.text_field :last_name %></div>
@@ -15,10 +15,16 @@
       <div class="rs"><%= pf.text_field :middle_name %></div>
     </div>
   </div>
-  <div class="sfield long_field">
+  <div class="sfield field">
     <div class="ls"><%= t('.addresses')%></div>
     <div class="rs">
       <%= render 'people/addresses_fields', no_remove: true, person: person %>
+    </div>
+  </div>
+  <div class="sfield field">
+    <div class="ls"><%= t('.phone_numbers')%></div>
+    <div class="rs">
+      <%= render 'people/phone_numbers_fields', no_remove: true, person: person %>
     </div>
   </div>
   

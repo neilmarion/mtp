@@ -55,6 +55,7 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
     @person.delete_offices
     @person.delete_addresses
+    @person.delete_phone_numbers
 
     respond_to do |format|
       if @person.update_attributes(params[:person])
