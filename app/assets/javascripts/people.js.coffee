@@ -13,7 +13,7 @@ $ ->
       buttons: 
         Cancel: ->
           $(this).dialog('destroy')
-          $('#new_person form')[0].reset()
+          $('#new_person')[0].reset()
     false
 
   $('.person_row td:not(.checkbox_cell)').live 'click', ->
@@ -36,5 +36,4 @@ $ ->
     true
     
   $('.controls a.delete').live 'click', (e)->
-    if confirm I18n.t('people.index.destroy_confirm')
-      $(this).closest('tr').fadeOut()
+    $(this).closest('tr').fadeOut()

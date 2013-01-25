@@ -1,5 +1,5 @@
 <h1>
-  <%= @person.name %>
+  <%= @person.name %> <small><%= link_to(t('general.edit'), edit_person_path(@person)) %></small>
 </h1>
 
 <p>
@@ -9,6 +9,3 @@
 <p>
   <%= @person.organization_names %>
 </p>
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
