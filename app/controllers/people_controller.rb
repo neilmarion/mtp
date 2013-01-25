@@ -21,6 +21,7 @@ class PeopleController < ApplicationController
   # GET /people/1.json
   def show
     @person = Person.find(params[:id])
+    @map_data = @person.addresses.first.to_gmaps4rails
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,6 +38,7 @@ class PeopleController < ApplicationController
   # POST /people.json
   def create
     @person = Person.new(params[:person])
+    
 
     respond_to do |format|
       if @person.save

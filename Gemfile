@@ -27,6 +27,7 @@ gem 'simplecov', :require => false, :group => :test
 gem 'i18n-js'
 gem 'will_paginate', '~> 3.0'
 gem 'geocoder'
+gem 'gmaps4rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -49,6 +49,7 @@ if Cfo.all.empty?
   Cfo.create(name: 'Binhi')
 end
 
-Person.create(last_name: "dela Cruz", first_name: "Neil Marion", middle_name: "Flores", organization_id: @talon.id, cfo_id: @kadiwa.id)
+@person = Person.create(last_name: "dela Cruz", first_name: "Neil Marion", middle_name: "Flores", organization_id: @talon.id, cfo_id: @kadiwa.id)
+@person.addresses.create({longitude: 120.9823735, latitude: 14.455693})
 
 Person.first.offices = [@choir, @kadiwa_office]

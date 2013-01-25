@@ -9,6 +9,8 @@
       <% person.addresses.each_with_index do |address, index| %>
         <div id="addresses[<%= index %>]">
           <%= text_field_tag "person[addresses_attributes][#{index}][address]", address.address %>
+          <%= text_field_tag "person[addresses_attributes][0][latitude]", address.latitude %>
+        <%= text_field_tag "person[addresses_attributes][0][longitude]", address.longitude %>
         </div>
       <% end %>
     <% end %>
