@@ -7,7 +7,7 @@ $ ->
     $('#new_person')[0].reset()
     $('#add_person_div').dialog
       resizable: false,
-      height:444,
+      height:650,
       width:1200,
       modal: true,
       buttons: 

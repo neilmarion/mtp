@@ -10,8 +10,16 @@
 a = Organization.create(name: 'IGLESIA NI CRISTO', type_of_children: 'District')
 a = a.children.create(name: 'Metro Manila South', type_of_children: 'Locale')
 a = a.children.create(name: 'Talon', type_of_children: 'Purok')
-a = a.children.create(name: '1', type_of_children: 'Grupo')
-@talon = a.children.create(name: '1', type_of_children: nil)
+for i in 1..4 
+  a.children.create(name: i.to_s, type_of_children: 'Grupo') 
+end
+a.children.each do |c|
+  for i in 1..10
+    c.children.create(name: i.to_s)
+  end
+end
+
+@talon = a.children.first.children.first
 
 if Office.all.empty?
   Office.create(name: 'Deaconship')
