@@ -7,7 +7,7 @@ class PeopleController < ApplicationController
   
   def index
     @q = Person.search(params[:search])
-    @people = @q.all
+    @people = @q.paginate(:page => params[:page], :per_page => 20)
     @person = Person.new
     5.times { @person.people_offices.build }
 

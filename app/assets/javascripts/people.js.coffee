@@ -8,7 +8,7 @@ $ ->
     $('#add_person_div').dialog
       resizable: false,
       height:444,
-      width:600,
+      width:1000,
       modal: true,
       buttons: 
         Cancel: ->

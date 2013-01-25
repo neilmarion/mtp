@@ -15,3 +15,5 @@
 <div id="add_person_div" style="display:none" title="<%= t('.add_person') %>" class="fingerme">
   <%= render 'add_person', person: @person %>
 </div>
+
+<%= will_paginate @people %>
