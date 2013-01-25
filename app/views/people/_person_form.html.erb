@@ -19,6 +19,9 @@ function updateMarkerStatus(str) {
 }
 
 function updateMarkerPosition(latLng) {
+  document.getElementById('person_addresses_attributes_0_longitude').value = latLng.lng()
+  document.getElementById('person_addresses_attributes_0_latitude').value = latLng.lat()
+
   document.getElementById('info').innerHTML = [
     latLng.lat(),
     latLng.lng()
@@ -30,9 +33,13 @@ function updateMarkerAddress(str) {
 }
 
 function initialize() {
-  var latLng = new google.maps.LatLng(14.455693, 120.9892549);
+
+  <%= lat = @person.addresses.blank? ? 14.445282806398495 : @person.addresses.first.latitude %>
+  <%= long = @person.addresses.blank? ? 120.98913688280334 : @person.addresses.first.longitude %>
+
+  var latLng = new google.maps.LatLng(<%= lat.blank? ? 14.445282806398495 : lat %>, <%= long.blank? ? 120.98913688280334 : long %>);
   var map = new google.maps.Map(document.getElementById('mapCanvas'), {
-    zoom: 8,
+    zoom: 17,
     center: latLng,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });

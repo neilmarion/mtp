@@ -2,11 +2,15 @@
     <% if person.new_record? || person.addresses.blank?%>
       <div id="addresses[0]">
         <%= text_field_tag "person[addresses_attributes][0][address]" %>
+        <%= text_field_tag "person[addresses_attributes][0][longitude]" %>
+        <%= text_field_tag "person[addresses_attributes][0][latitude]" %>
       </div>
     <% else %>
       <% person.addresses.each_with_index do |address, index| %>
         <div id="addresses[<%= index %>]">
           <%= text_field_tag "person[addresses_attributes][#{index}][address]", address.address %>
+          <%= text_field_tag "person[addresses_attributes][#{index}][longitude]" %>
+          <%= text_field_tag "person[addresses_attributes][#{index}][latitude]" %>
         </div>
       <% end %>
     <% end %>
