@@ -3,6 +3,8 @@ class Address < ActiveRecord::Base
   
   belongs_to :person
   
+  extend Geocoder::Model::ActiveRecord
+
   geocoded_by :address_for_geocode
   reverse_geocoded_by :latitude, :longitude, :address => :address
   after_create :reverse_geocode  # auto-fetch address
