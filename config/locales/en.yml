@@ -35,3 +35,5 @@ en:
       cfo: CFO
     offices_fields:
       add_an_office: " Add an Office"
+    addresses_fields:
+      add_an_address: " Add an Address"

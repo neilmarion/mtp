@@ -1,0 +1,14 @@
+<div id="address_fields">
+    <% if person.new_record? || person.addresses.blank?%>
+      <div id="address[0]">
+        <%= text_field_tag "person[addresses_attributes][0][address]" %>
+      </div>
+    <% else %>
+      <% person.addresses.each_with_index do |address, index| %>
+        <div id="address[<%= index %>]">
+          <%= text_field_tag "person[addresses_attributes][#{index}][address]", address.address %>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+<%= link_to image_tag("add.png") + t('.add_an_address'), '#', id: 'add_an_address' %>

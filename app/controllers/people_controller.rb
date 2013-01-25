@@ -9,7 +9,6 @@ class PeopleController < ApplicationController
     @q = Person.search(params[:search])
     @people = @q.paginate(:page => params[:page], :per_page => 20)
     @person = Person.new
-    5.times { @person.people_offices.build }
 
     respond_to do |format|
       format.html # index.html.erb
@@ -55,6 +54,7 @@ class PeopleController < ApplicationController
   def update
     @person = Person.find(params[:id])
     @person.delete_offices
+    @person.delete_addresses
 
     respond_to do |format|
       if @person.update_attributes(params[:person])
