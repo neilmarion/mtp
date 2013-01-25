@@ -2,6 +2,8 @@
     <% if person.new_record? || person.addresses.blank?%>
       <div id="addresses[0]">
         <%= text_field_tag "person[addresses_attributes][0][address]" %>
+        <%= text_field_tag "person[addresses_attributes][0][latitude]" %>
+        <%= text_field_tag "person[addresses_attributes][0][longitude]" %>
       </div>
     <% else %>
       <% person.addresses.each_with_index do |address, index| %>
