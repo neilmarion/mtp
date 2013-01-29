@@ -3,20 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  initialize = ->
-  myLatlng = new google.maps.LatLng(14.455661832483251, 120.98109025575866)
-  mapOptions =
-    zoom: 15
-    center: myLatlng
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-
-  map = new google.maps.Map(document.getElementById("map"), mapOptions)
-  latlng = new google.maps.LatLng(123, 123)
-  marker = new google.maps.Marker(
-    position: latlng
-    map: map
-  )
-
   $('#people_controller a.add_person').live 'click', ->
     $('#new_person')[0].reset()
     $('#add_person_div').dialog
@@ -45,13 +31,9 @@ $ ->
     
     false
     
-    
-    
-
-  $('.person_row td:not(.checkbox_cell)').live 'click', ->
-    unless $('a', this)[0]?
-      tr = $(this).parent()
-      document.location = '/people/' + tr.attr('data-id')
+  $('#person_fb_profile').live 'keyup', ->
+    a = $(this).val().split('/')
+    $('#fb_profile_pic').html('<img alt="Picture?type=large" src="http://graph.facebook.com/'+a[a.length-1]+'/picture?type=large">')
 
 
   $('#add_person_div .save').live 'click', ->
@@ -66,6 +48,11 @@ $ ->
       false
       
     true
+    
+  $('.person_row td:not(.checkbox_cell)').live 'click', ->
+    unless $('a', this)[0]?
+      tr = $(this).parent()
+      document.location = '/people/' + tr.attr('data-id')
     
   $('.controls a.delete').live 'click', (e)->
     $(this).closest('tr').fadeOut()
