@@ -13,10 +13,12 @@
           <% end %>
           
           <%= select_tag "person[people_offices_attributes][#{index}][office_id]", options_from_collection_for_select(office.siblings, :id, :name, office.id), include_blank: true, data_level: ancestor_no %>
+          <%= link_to '×', '#', class: 'delete_entry' unless index == 0 %>
         </div>
+        
       <% end %>
+      
     <% end %>
-    
   </div>
   <%= link_to image_tag("add.png") + t('.add_an_office'), '#', id: 'add_an_office' %>
 </div>

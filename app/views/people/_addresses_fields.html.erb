@@ -1,18 +1,20 @@
 <div id="address_fields">
     <% if person.new_record? || person.addresses.blank?%>
       <div id="addresses[0]">
-        <%= text_field_tag "person[addresses_attributes][0][address]" %>
-        <%= text_field_tag "person[addresses_attributes][0][longitude]" %>
-        <%= text_field_tag "person[addresses_attributes][0][latitude]" %>
+        <%= text_area_tag "person[addresses_attributes][0][address]", class: "entry" %>
+        <%= hidden_field_tag "person[addresses_attributes][0][longitude]" %>
+        <%= hidden_field_tag "person[addresses_attributes][0][latitude]" %>
       </div>
     <% else %>
       <% person.addresses.each_with_index do |address, index| %>
         <div id="addresses[<%= index %>]">
-          <%= text_field_tag "person[addresses_attributes][#{index}][address]", address.address %>
-          <%= text_field_tag "person[addresses_attributes][#{index}][longitude]" %>
-          <%= text_field_tag "person[addresses_attributes][#{index}][latitude]" %>
+          <%= text_area_tag "person[addresses_attributes][#{index}][address]", address.address, class: "entry"  %>
+          <%= hidden_field_tag "person[addresses_attributes][#{index}][longitude]" %>
+          <%= hidden_field_tag "person[addresses_attributes][#{index}][latitude]" %>
+          <%= link_to '×', '#', class: 'delete_entry' unless index == 0 %>
         </div>
       <% end %>
     <% end %>
 </div>
 <%= link_to image_tag("add.png") + t('.add_an_address'), '#', id: 'add_an_address' %>
+

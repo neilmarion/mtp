@@ -7,6 +7,7 @@
       <% person.phone_numbers.each_with_index do |phone_number, index| %>
         <div id="phone_numbers[<%= index %>]">
           <%= text_field_tag "person[phone_numbers_attributes][#{index}][phone_number]", phone_number.phone_number %>
+          <%= link_to '×', '#', class: 'delete_entry' unless index == 0 %>
         </div>
       <% end %>
     <% end %>

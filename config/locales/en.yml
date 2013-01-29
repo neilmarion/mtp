@@ -37,3 +37,5 @@ en:
       add_an_office: " Add an Office"
     addresses_fields:
       add_an_address: " Add an Address"
+    phone_numbers_fields:
+      add_a_phone_number: " Add a Phone Number"

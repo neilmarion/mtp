@@ -37,3 +37,7 @@ $ ->
     
   $('.controls a.delete').live 'click', (e)->
     $(this).closest('tr').fadeOut()
+    
+  $('.delete_entry').live 'click', ->
+    $(this).closest('div').remove()
+  
