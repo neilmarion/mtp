@@ -33,7 +33,7 @@ function initialize() {
   <%= long = @person.addresses.blank? ? 120.98913688280334 : @person.addresses.first.longitude %>
 
   var latLng = new google.maps.LatLng(<%= lat.blank? ? 14.445282806398495 : lat %>, <%= long.blank? ? 120.98913688280334 : long %>);
-  var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+  var map = new google.maps.Map(document.getElementById('map_canvas_edit'), {
     zoom: 17,
     center: latLng,
     mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -72,7 +72,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   <div id="info"></div>
   <b>Closest matching address:</b>
   <div id="address"></div>
-  <div id="mapCanvas"></div>
+  <div id="map_canvas_edit"></div>
 </div>
 
 

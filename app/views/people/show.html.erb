@@ -8,7 +8,7 @@
         center: myLatlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
-      var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+      var map = new google.maps.Map(document.getElementById('map_canvas_show'), mapOptions);
 
       var marker = new google.maps.Marker({
           position: myLatlng,
@@ -19,26 +19,36 @@
   google.maps.event.addDomListener(window, 'load', initialize);
   </script>
 
-  <style>
-    #map_canvas {
-      width: 500px;
-      height: 400px;
-      float: right;
-    }
-  </style>
-
-  <div id="map_canvas"></div>
+  <div id="map_canvas_show"></div>
 
 <% end %>
 
 <h1>
   <%= @person.name %> <small><%= link_to(t('general.edit'), edit_person_path(@person)) %></small>
 </h1>
-
-<p>
-  <%= @person.office_names.join(', ') %>
-</p>
-
-<p>
+<h3>
   <%= @person.organization_names %>
-</p>
+</h3>
+
+
+
+<div class="sfield field">
+  <div class="ls"><%= t('.addresses')%></div>
+  <% @person.addresses.each do |address| %>
+    <div class="rs grey_field_long"><%= address.address %></div>
+  <% end %>
+</div>
+
+<div class="sfield field">
+  <div class="ls"><%= t('.phone_numbers')%></div>
+  <% @person.phone_numbers.each do |phone_number| %>
+    <div class="rs grey_field_long"><%= phone_number.phone_number %></div>
+  <% end %>
+</div>
+
+<div class="sfield field">
+  <div class="ls"><%= t('.offices')%></div>
+  <% @person.office_names.each do |office_name| %>
+    <div class="rs grey_field_long"><%= office_name %></div>
+  <% end %>
+</div>
