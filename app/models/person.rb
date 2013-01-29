@@ -43,6 +43,26 @@ class Person < ActiveRecord::Base
     phone_numbers.collect(&:destroy)
   end
   
+  def fb_username
+    fb_profile.nil? ? "" : fb_profile.split('/').last
+  end
+  
+  def fb_profile_pic_square
+    "http://graph.facebook.com/#{fb_username}/picture?type=square"
+  end
+  
+  def fb_profile_pic_small
+    "http://graph.facebook.com/#{fb_username}/picture?type=small"
+  end
+  
+  def fb_profile_pic_normal
+    "http://graph.facebook.com/#{fb_username}/picture?type=normal"
+  end
+  
+  def fb_profile_pic_large
+    "http://graph.facebook.com/#{fb_username}/picture?type=large"
+  end
+  
   protected
   
   def get_names_of_self_and_parents(o)

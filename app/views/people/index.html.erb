@@ -17,7 +17,7 @@ function initialize() {
       map: map,
       title: '<%= person.name %>',
       labelContent: '<%= person.name %>',
-      html: '<%= link_to person.name, person_path(person) %>'
+      html: '<div><%= image_tag person.fb_profile_pic_square %><%= link_to person.name, person_path(person) %><br><%= person.organization_names %></div>'
     });
     
     markers.push(marker)
