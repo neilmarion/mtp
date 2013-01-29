@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  attr_accessible :birth_date, :first_name, :last_name, :middle_name, :office_id, :organization_id, :cfo_id, :people_offices_attributes, :addresses_attributes, :phone_numbers_attributes
+  attr_accessible :birth_date, :first_name, :last_name, :middle_name, :office_id, :organization_id, :cfo_id, :people_offices_attributes, :addresses_attributes, :phone_numbers_attributes, :fb_profile
   
   belongs_to :organization
   belongs_to :cfo

@@ -39,7 +39,7 @@ $ ->
     $('#left').toggle()
     
     if $('#main').css('margin-left') == '0px'
-      $('#main').css('margin-left', '20%')
+      $('#main').css('margin-left', '15%')
     else
       $('#main').css('margin-left', '0px')
     
