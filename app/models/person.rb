@@ -50,7 +50,7 @@ class Person < ActiveRecord::Base
     names = [o.name]
     
     if o.ancestry == nil
-      return []
+      return [o.name]
     else
       names += get_names_of_self_and_parents(o.parent)
     end
