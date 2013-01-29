@@ -3,6 +3,20 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
+  initialize_map_index = ->
+    myLatlng = new google.maps.LatLng(14.445282806398495, 120.98913688280334)
+    mapOptions =
+      zoom: 17
+      center: myLatlng
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+
+    map = new google.maps.Map(document.getElementById("map"), mapOptions)
+    marker = new google.maps.Marker(
+      position: myLatlng
+      map: map
+      title: "Hello World!"
+    )
+
   $('#people_controller a.add_person').live 'click', ->
     $('#new_person')[0].reset()
     $('#add_person_div').dialog
@@ -15,6 +29,15 @@ $ ->
           $(this).dialog('destroy')
           $('#new_person')[0].reset()
     false
+    
+  $('#people_controller a.see_map').click ->
+    $('#map').toggle()
+    initialize_map_index()
+    
+    false
+    
+    
+    
 
   $('.person_row td:not(.checkbox_cell)').live 'click', ->
     unless $('a', this)[0]?

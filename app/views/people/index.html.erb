@@ -1,3 +1,22 @@
+  <script type="text/javascript">
+    function initialize() {
+      var myLatlng = new google.maps.LatLng(14.445282806398495,120.98913688280334);
+      var mapOptions = {
+        zoom: 17,
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+      var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          title: 'Hello World!'
+      });
+    }
+  
+  </script>
+
 <h1>
   People
 </h1>
@@ -6,11 +25,17 @@
   <%= render partial: 'menu' %>
 </div>
 
-<table class="listing" cellpadding="0" cellspacing="0">
-  <tbody id="people_table">
-    <%= render 'people/people', people: @people %>
-  </tbody>
-</table>
+<div id="canvas">
+  <div id="map" style="<%= 'display:none' %>">
+  </div>
+  <div id="table">
+    <table class="listing" cellpadding="0" cellspacing="0">
+      <tbody id="people_table">
+        <%= render 'people/people', people: @people %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <div id="add_person_div" style="display:none" title="<%= t('.add_person') %>" class="fingerme">
   <%= render 'add_person', person: @person %>
