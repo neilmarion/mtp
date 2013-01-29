@@ -3,6 +3,19 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
+  initialize = ->
+  myLatlng = new google.maps.LatLng(14.455661832483251, 120.98109025575866)
+  mapOptions =
+    zoom: 15
+    center: myLatlng
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+
+  map = new google.maps.Map(document.getElementById("map"), mapOptions)
+  latlng = new google.maps.LatLng(123, 123)
+  marker = new google.maps.Marker(
+    position: latlng
+    map: map
+  )
 
   $('#people_controller a.add_person').live 'click', ->
     $('#new_person')[0].reset()
