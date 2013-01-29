@@ -1,11 +1,11 @@
 <div id="phone_number_fields">
     <% if person.new_record? || person.phone_numbers.blank?%>
-      <div id="phone_numbers[0]">
+      <div id="phone_numbers[0]" class="grey_field_long">
         <%= text_field_tag "person[phone_numbers_attributes][0][phone_number]" %>
       </div>
     <% else %>
       <% person.phone_numbers.each_with_index do |phone_number, index| %>
-        <div id="phone_numbers[<%= index %>]">
+        <div id="phone_numbers[<%= index %>]" class="grey_field_long">
           <%= text_field_tag "person[phone_numbers_attributes][#{index}][phone_number]", phone_number.phone_number %>
           <%= link_to '×', '#', class: 'delete_entry' unless index == 0 %>
         </div>

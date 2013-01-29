@@ -6,13 +6,16 @@
       </div>
     <% else %>
       <% person.offices.each_with_index do |office, index| %>
-        <div id="office_select[<%= index %>]" class="grey_field">
-          <% ancestor_no = office.ancestors.count %>
-          <% office.ancestors.each_with_index do |ancestor, index| %>
-              <%= select_tag nil, options_from_collection_for_select(ancestor.siblings, :id, :name, ancestor.id), include_blank: true, data_level: index %>
-          <% end %>
+        <div>
+          <div id="office_select[<%= index %>]" class="grey_field_long">
+            <% ancestor_no = office.ancestors.count %>
+            <% office.ancestors.each_with_index do |ancestor, index| %>
+                <%= select_tag nil, options_from_collection_for_select(ancestor.siblings, :id, :name, ancestor.id), include_blank: true, data_level: index %>
+            <% end %>
+            
+            <%= select_tag "person[people_offices_attributes][#{index}][office_id]", options_from_collection_for_select(office.siblings, :id, :name, office.id), include_blank: true, data_level: ancestor_no %>
           
-          <%= select_tag "person[people_offices_attributes][#{index}][office_id]", options_from_collection_for_select(office.siblings, :id, :name, office.id), include_blank: true, data_level: ancestor_no %>
+          </div>
           <%= link_to '×', '#', class: 'delete_entry' unless index == 0 %>
         </div>
         
