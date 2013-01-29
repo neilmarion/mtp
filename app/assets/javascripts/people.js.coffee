@@ -22,6 +22,16 @@ $ ->
     google.maps.event.trigger map, "resize"
     false
     
+  $('#people_controller a.search_and_filter').click ->
+    $('#left').toggle()
+    
+    if $('#main').css('margin-left') == '0px'
+      $('#main').css('margin-left', '20%')
+    else
+      $('#main').css('margin-left', '0px')
+    
+    false
+    
     
     
 
