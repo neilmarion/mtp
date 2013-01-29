@@ -13,10 +13,6 @@ function geocodePosition(pos) {
   });
 }
 
-function updateMarkerStatus(str) {
-  document.getElementById('markerStatus').innerHTML = str;
-}
-
 function updateMarkerPosition(latLng) {
   document.getElementById('person_addresses_attributes_0_longitude').value = latLng.lng()
   document.getElementById('person_addresses_attributes_0_latitude').value = latLng.lat()
@@ -59,12 +55,10 @@ function initialize() {
   });
   
   google.maps.event.addListener(marker, 'drag', function() {
-    updateMarkerStatus('Dragging...');
     updateMarkerPosition(marker.getPosition());
   });
   
   google.maps.event.addListener(marker, 'dragend', function() {
-    updateMarkerStatus('Drag ended');
     geocodePosition(marker.getPosition());
   });
 }
@@ -74,9 +68,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
 <div id="infoPanel">
-  
-  <b>Marker status:</b>
-  <div id="markerStatus"><i>Click and drag the marker.</i></div>
   <b>Current position:</b>
   <div id="info"></div>
   <b>Closest matching address:</b>

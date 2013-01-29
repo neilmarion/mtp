@@ -1,13 +1,15 @@
 <div id="address_fields">
     <% if person.new_record? || person.addresses.blank?%>
       <div id="addresses[0]" class="grey_field_long">
-        <%= text_area_tag "person[addresses_attributes][0][address]", class: "entry" %>
+        <%= label_tag "Primary" %>
+        <%= text_area_tag "person[addresses_attributes][0][address]", nil, class: "entry" %>
         <%= hidden_field_tag "person[addresses_attributes][0][longitude]" %>
         <%= hidden_field_tag "person[addresses_attributes][0][latitude]" %>
       </div>
     <% else %>
       <% person.addresses.each_with_index do |address, index| %>
         <div id="addresses[<%= index %>]" class="grey_field_long">
+          <%= label_tag "Primary" if index == 0%>
           <%= text_area_tag "person[addresses_attributes][#{index}][address]", address.address, class: "entry"  %>
           <%= hidden_field_tag "person[addresses_attributes][#{index}][longitude]" %>
           <%= hidden_field_tag "person[addresses_attributes][#{index}][latitude]" %>
