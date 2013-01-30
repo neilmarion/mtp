@@ -7,6 +7,17 @@ $ ->
     $.ajax '/people.json'
       success: (data, status, xhr) ->
         initialize_map(data)
+        
+  calcRoute = (latLng1, latLng2, directionsDisplay, directionsService) ->
+    start = latLng1
+    end = latLng2
+    request =
+      origin: start
+      destination: end
+      travelMode: google.maps.DirectionsTravelMode.DRIVING
+
+    directionsService.route request, (response, status) ->
+      directionsDisplay.setDirections response  if status is google.maps.DirectionsStatus.OK
 
   initialize_map = (data) ->
     myLatlng = new google.maps.LatLng(14.455661832483251, 120.98109025575866)
@@ -19,8 +30,17 @@ $ ->
     map = new google.maps.Map(document.getElementById("map"), mapOptions)
     
     console.log data
+    directionsService = new google.maps.DirectionsService();
+    directionsDisplay = new google.maps.DirectionsRenderer(
+      map: map
+      preserveViewport: true
+      draggable: true
+    )
     
+    latLng1 = new google.maps.LatLng(14.445282806398495, 120.98913688280334)
+    latLng2 = new google.maps.LatLng(14.455713778342083, 120.98237771608581)
     
+    calcRoute(latLng1, latLng2, directionsDisplay, directionsService)
     
     for key of data
       fb = data[key]['fb_profile'].split('/') if data[key]['fb_profile']
