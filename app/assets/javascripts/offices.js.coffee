@@ -57,13 +57,16 @@ $ ->
         dataType: 'json',
         data: 'id='+$(this).val(),
         success: (data) ->
+          t.attr('id', 'office_id')
+          t.attr('name', 'office_id')
+        
           if data.length > 0
-            t.removeAttr('id')
-            t.removeAttr('name')
-            parent.append('<select data_level='+parent.find('select').size()+' id="office_id" name="office_id"><option></option></select>')
+            if t.index() > 0
+              t.parent().get(t.index()-1).removeAttr('id')
+              t.parent().get(t.index()-1).removeAttr('name')
+            parent.append('<select id="dummy" data_level='+parent.find('select').size()+'><option></option></select>')
             $.each data, (key, val) ->
-              $('#office_id').append('<option value='+val['id']+'>'+val['name']+'</option>')
-          else
-            t.attr('id', 'office_id')
-            t.attr('name', 'office_id')
+              console.log t.index()
+              $('#dummy').append('<option value='+val['id']+'>'+val['name']+'</option>')
+              
     

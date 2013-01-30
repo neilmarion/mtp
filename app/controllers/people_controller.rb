@@ -92,10 +92,10 @@ class PeopleController < ApplicationController
   def filter
     @q = Person.where(cfo_id: Cfo.all.collect(&:id))
   
-    if params[:cfo_id]
+    unless params[:cfo_id].blank?
       @q = @q.where(cfo_id: params[:cfo_id])
     end
-    if params[:office_id]
+    unless params[:office_id].blank?
       @q = @q.joins(:people_offices).where('people_offices.office_id = ?', params[:office_id])
     end
     
