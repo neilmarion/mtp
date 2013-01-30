@@ -20,9 +20,7 @@
 <body id="<%= controller.controller_name %>_controller" class="<%= params[:action] %>">
   
   <div id="outer">
-    <div id="global">
-      
-    </div>
+    <%= render 'shared/nav' %>
     
     <div class="ui-dialog-titlebar ui-widget-header" id="menutop">
       <span class="<%= params[:controller] == "people" ? 'main_link_clicked' : 'main_link' %>">

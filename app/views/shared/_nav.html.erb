@@ -1,0 +1,16 @@
+<div id="global">
+  <div class="gmdrop">
+    <ul class="sf-menu mh-global">
+      <li>
+        <% if Organization.all.length > 1 %>
+          <% cache(['org_nav', Person.first.id]) do %>
+            <ul class="under_tree">
+              hello
+              <%= new_render_org_tree(Person.org_tree_node(Organization.first)) %>
+            </ul>
+          <% end %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

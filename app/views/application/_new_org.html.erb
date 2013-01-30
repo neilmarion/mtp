@@ -1,0 +1,12 @@
+<% primary = Organization.first %>
+  <div class="org_nav_item">
+    <div class="org_control org_control_<%= org.id %> <%= 'tree_no_child' unless children.present? %>" child_div="children_org_<%= org.id %>" id="org_control_<%= org.id %>"></div>
+    <div class="org_name">
+      <%= link_to "#{org.name}", organization_path(org),
+        class: "plain_name org_nav_toggle", title: "Go to #{org.name}",
+        id: "org_nav_#{org.id}" %>
+    </div>
+  </div>
+  <div class="org_nav_children" id="children_org_<%= org.id %>">
+    <%= new_render_org_tree(children) %>
+  </div>
