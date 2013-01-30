@@ -21,6 +21,25 @@
           </div>
         </div>
         
+        <div class="sfield field_left">
+        <div class="ls"><%= t('.office')%></div>
+          <div class="rs">
+            
+            
+              <div id="filter_office_selects">
+                <div class="grey_field_long">
+                  <div id="filter_office_select[0]" class="office_select">
+                    <%= select_tag "office_id", options_from_collection_for_select(@offices, :id, :name), include_blank: true, data_level: 0 %>
+                  </div>
+                </div>
+              </div>
+            
+            
+            
+            
+          </div>
+        </div>
+        
         <%= submit_tag t('general.search') %>
       <% end %>      
     </li>

@@ -90,8 +90,13 @@ class PeopleController < ApplicationController
   protected
   
   def filter
+    @q = Person.where(cfo_id: Cfo.all.collect(&:id))
+  
     if params[:cfo_id]
-      @q = Person.where(cfo_id: params[:cfo_id])
+      @q = @q.where(cfo_id: params[:cfo_id])
+    end
+    if params[:office_id]
+      @q = @q.joins(:people_offices).where('people_offices.office_id = ?', params[:office_id])
     end
     
     @q = @q.search(params[:search])

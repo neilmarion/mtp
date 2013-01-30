@@ -40,5 +40,30 @@ $ ->
           $.each data, (key, val) ->
             $('#person_people_offices_attributes_'+s+'_office_id').append('<option value='+val['id']+'>'+val['name']+'</option>')
     
-    
+  $('#filter_office_selects div select').live 'change', ->
+      data_level = Number($(this).attr('data_level'))
+        
+      t = $(this)
+      parent_id = $(this).parent().attr('id')
+      parent = $(this).parent()
+      parent_index = $(this).parent().parent().index()
+      
+      parent.find('select').each ->
+        $(this).remove() if Number($(this).attr('data_level')) > data_level
+      
+      $.ajax
+        type: 'GET',
+        url: '/offices/get_children?format=json',
+        dataType: 'json',
+        data: 'id='+$(this).val(),
+        success: (data) ->
+          if data.length > 0
+            t.removeAttr('id')
+            t.removeAttr('name')
+            parent.append('<select data_level='+parent.find('select').size()+' id="office_id" name="office_id"><option></option></select>')
+            $.each data, (key, val) ->
+              $('#office_id').append('<option value='+val['id']+'>'+val['name']+'</option>')
+          else
+            t.attr('id', 'office_id')
+            t.attr('name', 'office_id')
     

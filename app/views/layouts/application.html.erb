@@ -30,7 +30,7 @@
     </div>
     
     <div id="left" style="<%= 'display:none' if params[:controller] != "people" || params[:action] != 'index'%>" >
-      <%= render 'people/left_panel' %>
+      <%= render 'people/left_panel' if params[:controller] == "people" && params[:action] == 'index' %>
     </div>
     <div id=<%= "main" unless params[:controller] == "organizations" || params[:action] == 'show' || params[:action] == 'edit' %>>
       <%= yield %>
