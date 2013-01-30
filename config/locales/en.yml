@@ -7,6 +7,7 @@ en:
     save_and_close: Save and close
     save_and_add: Save and add another
     cant_be_blank: Can't be blank
+    search: Search
   errors:
     first_name_missing: First name missing
   organizations:
@@ -39,3 +40,5 @@ en:
       add_an_address: " Add an Address"
     phone_numbers_fields:
       add_a_phone_number: " Add a Phone Number"
+    left_panel:
+      cfo: CFO

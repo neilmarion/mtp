@@ -6,7 +6,17 @@ class PeopleController < ApplicationController
   
   
   def index
-    @q = Person.search(params[:search])
+    
+    
+    if params[:commit] == I18n.t('general.search')
+      filter 
+    else
+      @q = Person.search(params[:search])
+    end
+    
+    
+    
+    
     @people = @q.paginate(:page => params[:page], :per_page => 20)
     @person = Person.new
 
@@ -82,6 +92,14 @@ class PeopleController < ApplicationController
   end
   
   protected
+  
+  def filter
+    if params[:cfo_id]
+      @q = Person.where(cfo_id: params[:cfo_id])
+    end
+    
+    @q = @q.search(params[:search])
+  end
   
   def get_second_level_orgs
     @organizations = Organization.first.children

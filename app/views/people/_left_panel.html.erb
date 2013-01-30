@@ -1,0 +1,20 @@
+<div class="block">
+  <ul class="leftmenu">
+    <li>
+      <%= form_tag params, method: :get, id: 'contact_search_form' do %>
+        <div class="sfield field_left">
+        <div class="ls"><%= t('.cfo')%></div>
+        <div class="rs">
+          <% Cfo.all.each do |cfo| %>
+            <%= radio_button_tag :cfo_id, cfo.id %>
+            <%= label_tag :name, cfo.name %>
+            <br>
+          <% end %>
+        </div>
+        </div>
+        
+        <%= submit_tag t('general.search') %>
+      <% end %>      
+    </li>
+  </ul>
+</div>

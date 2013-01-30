@@ -123,7 +123,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <div class="rs">
       <% Cfo.all.each do |cfo| %>
         <%= pf.radio_button :cfo_id, cfo.id %>
-        <%= pf.label :contactmethod_email, cfo.name %>
+        <%= pf.label :name, cfo.name %>
         <br>
       <% end %>
     </div>
