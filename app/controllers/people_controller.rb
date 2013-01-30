@@ -6,19 +6,15 @@ class PeopleController < ApplicationController
   
   
   def index
-    
-    
+    @person = Person.new
+
     if params[:commit] == I18n.t('general.search')
       filter 
     else
       @q = Person.search(params[:search])
     end
     
-    
-    
-    
     @people = @q.paginate(:page => params[:page], :per_page => 20)
-    @person = Person.new
 
     respond_to do |format|
       format.html # index.html.erb
