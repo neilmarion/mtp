@@ -5,6 +5,7 @@ en:
   general:
     edit: edit
     save_and_close: Save and close
+    save: Save
     save_and_add: Save and add another
     cant_be_blank: Can't be blank
     search: Search
