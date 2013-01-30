@@ -63,6 +63,18 @@ class Person < ActiveRecord::Base
     "http://graph.facebook.com/#{fb_username}/picture?type=large"
   end
   
+  #this should be for the User model
+  def self.org_tree_node(o)
+    orgs = {}
+    @org_ids ||= {}
+    o.children.order('name').each do |org|
+      # collect roles associated with each org
+      @org_ids[org.id] ||= {}
+      orgs[org.id] = org_tree_node(org)
+    end
+    orgs
+  end
+  
   protected
   
   def get_names_of_self_and_parents(o)
