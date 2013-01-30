@@ -29,7 +29,7 @@
       <%= link_to 'Organizations', organizations_path %>
     </div>
     
-    <div id="left">
+    <div id="left" style="<%= 'display:none' if params[:controller] == "organizations" %>">
       <%= render 'people/left_panel' %>
     </div>
     <div id=<%= "main" unless params[:controller] == "organizations" %>>

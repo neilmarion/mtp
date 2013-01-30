@@ -3,6 +3,10 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
+  initialize = ->
+    $.ajax '/people.json'
+      success: (data, status, xhr) ->
+        initialize_map(data)
 
   initialize_map = (data) ->
     myLatlng = new google.maps.LatLng(14.455661832483251, 120.98109025575866)
