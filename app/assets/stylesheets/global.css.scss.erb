@@ -42,10 +42,36 @@ $font-secondary: Arial, Verdana;
 }
 
 #menutop {
-  border-bottom: 1px solid #0379AE;
   a {color: $white;}
   padding: 10px;
 }
+
+#menubelow {
+  border-bottom: 1px solid #cecece;
+  height: 40px;
+  background: #ededed;
+}
+
+.main_link {
+  height: 100%;
+  padding: 12px;
+}
+
+.main_link_clicked {
+  background: #ea7e25;
+  height: 100%;
+  padding: 12px;
+}
+
+.main_link:hover {
+  background: #ea7e25;
+}
+
+.sort_link {
+  color: #666666;
+}
+
+
 
 #main {
   margin-left: 15%;
@@ -376,7 +402,7 @@ ul.pillmenu {
 }
 
 .pagemenu {
-  background: $light-blue;
+  background: #f2f2f2;
   padding: 10px 15px;
   div.part_title {
     font-size: 18px;
@@ -390,12 +416,9 @@ ul.pillmenu {
   width: 100%;
   th {
     text-align: left;
-    background: #c7dff0;
+    background: #ededed;
     padding: 4px 2px 3px 2px;
 		vertical-align: top;
-		&.hidden_questions {
-		  text-align: center;
-		}
   }
   .check {
     width: 30px;
@@ -503,6 +526,23 @@ textarea, input[type=text], input[type=password] {
   padding: 5px;
   vertical-align: center;
 }
+
+.field_left_2 {
+  background: #F0F0F0;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  margin-bottom: 15px;
+  padding: 5px;
+  vertical-align: center;
+  text-align: center;
+}
+
+.field_left_2:hover {
+  background: #eaeaea;
+}
+
+
 
 .formactions {
   line-height: 35px;

@@ -25,8 +25,15 @@
     </div>
     
     <div class="ui-dialog-titlebar ui-widget-header" id="menutop">
-      <%= link_to 'People', people_path %>
-      <%= link_to 'Organizations', organizations_path %>
+      <span class="<%= params[:controller] == "people" ? 'main_link_clicked' : 'main_link' %>">
+        <%= link_to 'People', people_path %>
+      </span>
+      <span class="<%= params[:controller] == "organizations" ? 'main_link_clicked' : 'main_link' %>">
+        <%= link_to 'Organizations', organizations_path %>
+      </span>
+    </div>
+    <div id="menubelow">
+      
     </div>
     
     <div id="left" style="<%= 'display:none' if params[:controller] != "people" || params[:action] != 'index'%>" >

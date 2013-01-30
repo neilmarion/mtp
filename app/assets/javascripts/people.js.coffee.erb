@@ -18,15 +18,19 @@ $ ->
 
     map = new google.maps.Map(document.getElementById("map"), mapOptions)
     
+    console.log data
+    
+    
     
     for key of data
+      fb = data[key]['fb_profile'].split('/') if data[key]['fb_profile']
       latlng = new google.maps.LatLng(data[key]['addresses'][0]['latitude'], data[key]['addresses'][0]['longitude'])
       marker = new google.maps.Marker(
         position: latlng
         map: map
         title: 'hello'
-        labelContent: 'hello'
-        html: 'hello'
+        labelContent: 'hello' 
+        html: '<div><img alt="Picture?type=large" src="http://graph.facebook.com/'+fb[fb.length-1]+'/picture?type=square"><a href="/people/'+data[key]['id']+'">'+data[key]['first_name']+' '+data[key]['last_name']+'</a><br></div>'
       )
       markers.push marker
       
@@ -35,7 +39,7 @@ $ ->
       marker = markers[i]
       infowindow = new google.maps.InfoWindow()
       google.maps.event.addListener marker, "click", ->
-        infowindow.setContent "hello"
+        infowindow.setContent this.html
         infowindow.open map, this
       i++
       

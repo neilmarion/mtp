@@ -43,3 +43,7 @@ en:
       add_a_phone_number: " Add a Phone Number"
     left_panel:
       cfo: CFO
+    people:
+      last_name: Last Name
+      first_name: First Name
+      middle_name: Middle Name
