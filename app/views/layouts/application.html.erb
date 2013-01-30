@@ -29,10 +29,10 @@
       <%= link_to 'Organizations', organizations_path %>
     </div>
     
-    <div id="left" style="<%= 'display:none' if params[:controller] == "organizations" %>">
+    <div id="left" style="<%= 'display:none' if params[:controller] != "people" || params[:action] != 'index'%>" >
       <%= render 'people/left_panel' %>
     </div>
-    <div id=<%= "main" unless params[:controller] == "organizations" %>>
+    <div id=<%= "main" unless params[:controller] == "organizations" || params[:action] == 'show' || params[:action] == 'edit' %>>
       <%= yield %>
       
     </div>
