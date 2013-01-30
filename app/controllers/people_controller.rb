@@ -96,7 +96,7 @@ class PeopleController < ApplicationController
       @q = @q.where(cfo_id: params[:cfo_id])
     end
     unless params[:office_id].blank?
-      @q = @q.joins(:people_offices).where('people_offices.office_id = ?', params[:office_id])
+      @q = @q.joins(:people_offices).joins(:offices).where('people_offices.office_id = ? OR offices.ancestry LIKE ?', params[:office_id], params[:office_id])
     end
     
     @q = @q.search(params[:search])
