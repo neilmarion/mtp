@@ -3,6 +3,37 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
+  initialize_map = ->
+    myLatlng = new google.maps.LatLng(14.455661832483251, 120.98109025575866)
+    mapOptions =
+      zoom: 15
+      center: myLatlng
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+
+    map = new google.maps.Map(document.getElementById("map"), mapOptions)
+    latlng = new google.maps.LatLng(14.455661832483251, 120.98109025575866)
+    marker = new google.maps.Marker(
+      position: latlng
+      map: map
+      title: "TITLE"
+      labelContent: "NAME"
+      html: "<div>profile pic</div>"
+    )
+    markers.push marker
+    i = 0
+
+    while i < markers.length
+      marker = markers[i]
+      infowindow = new google.maps.InfoWindow()
+      google.maps.event.addListener marker, "click", ->
+        infowindow.setContent @html
+        infowindow.open map, this
+
+      i++
+  markers = []
+  google.maps.event.addDomListener window, "load", initialize
+
+
   $('#people_controller a.add_person').live 'click', ->
     $('#new_person')[0].reset()
     $('#add_person_div').dialog
@@ -59,4 +90,11 @@ $ ->
     
   $('.delete_entry').live 'click', ->
     $(this).closest('div').remove()
+    
+  $('#people_search_form').live 'submit', ->
+    
+    $.ajax '/people.json'
+      success: (data, status, xhr) ->
+        console.log(data)
+    
   
