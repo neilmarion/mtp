@@ -1,4 +1,5 @@
-<div id="global">
+
+<!-- <div id="global">
   <div class="gmdrop">
     <ul class="sf-menu mh-global">
       <li><%= link_to Organization.first.name, organization_path(Organization.first) %>
@@ -18,4 +19,22 @@
       </li>
     </ul>
   </div>
+</div>
+
+-->
+<div id="nav_container">
+  <ul class="sf-menu sf-js-enabled" style="float:right">
+    <li>
+      <a href="#">Organizations</a>
+      <ul>
+        <%= new_render_org_tree(Person.org_tree_node(Organization.first)) %>
+      </ul>
+    <li>
+    <li>
+      <a href="#">nmfdelacruz@gmail.com</a>
+    </li>
+    <li>
+      <a href="#">LOGOUT</a>
+    </li>
+  </ul>
 </div>
