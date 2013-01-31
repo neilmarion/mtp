@@ -15,3 +15,5 @@
 //= require_tree .
 //= require i18n
 //= require i18n/translations
+//= require superfish/jquery.superfish-1.5.0.js
+//= require superfish/hoverIntent.js
