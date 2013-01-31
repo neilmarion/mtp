@@ -12,18 +12,16 @@ $white: #fff;
 $font-base: Tahoma, Arial;
 $font-secondary: Arial, Verdana;
 
+
 #outer {
   max-width: $maxpagewidth;
   min-width: $minpagewidth;
-  padding: 0 12px;
-  margin: 0 auto;
 }
 
 #global {
+  background: #5e2750;
   text-align: right;
   font-size: 11px;
-  margin-top: 20px;
-  margin-bottom: 15px;
   height: 40px;
   line-height: 28px;
   .item {
@@ -44,12 +42,7 @@ $font-secondary: Arial, Verdana;
 #menutop {
   a {color: $white;}
   padding: 10px;
-}
-
-#menubelow {
-  border-bottom: 1px solid #cecece;
-  height: 40px;
-  background: #ededed;
+  background: #5e2750;
 }
 
 .main_link {
@@ -75,6 +68,11 @@ $font-secondary: Arial, Verdana;
 
 #main {
   margin-left: 15%;
+}
+
+#container {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 #left {
@@ -132,7 +130,7 @@ ul.leftmenu {
     }
   }
   > li {
-    padding-right: 15px;
+    padding-right: 5px;
   }
   li.selected {
     background: $light-blue;
@@ -402,8 +400,7 @@ ul.pillmenu {
 }
 
 .pagemenu {
-  background: #f2f2f2;
-  padding: 10px 15px;
+  padding: 5px 5px;
   div.part_title {
     font-size: 18px;
     font-weight: bold;
@@ -416,7 +413,6 @@ ul.pillmenu {
   width: 100%;
   th {
     text-align: left;
-    background: #ededed;
     padding: 4px 2px 3px 2px;
 		vertical-align: top;
   }

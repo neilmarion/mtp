@@ -22,7 +22,8 @@
   <div id="outer">
     <%= render 'shared/nav' %>
     
-    <div class="ui-dialog-titlebar ui-widget-header" id="menutop">
+    
+    <div id="menutop">
       <span class="<%= params[:controller] == "people" ? 'main_link_clicked' : 'main_link' %>">
         <%= link_to 'People', people_path %>
       </span>
@@ -30,16 +31,16 @@
         <%= link_to 'Organizations', organizations_path %>
       </span>
     </div>
-    <div id="menubelow">
       
-    </div>
-    
-    <div id="left" style="<%= 'display:none' if params[:controller] != "people" || params[:action] != 'index'%>" >
-      <%= render 'people/left_panel' if params[:controller] == "people" && params[:action] == 'index' %>
-    </div>
-    <div id=<%= "main" unless params[:controller] == "organizations" || params[:action] == 'show' || params[:action] == 'edit' %>>
-      <%= yield %>
+    <div id="container">
       
+      <div id="left" style="<%= 'display:none' if params[:controller] != "people" || params[:action] != 'index'%>" >
+        <%= render 'people/left_panel' if params[:controller] == "people" && params[:action] == 'index' %>
+      </div>
+      <div id=<%= "main" unless params[:controller] == "organizations" || params[:action] == 'show' || params[:action] == 'edit' %>>
+        <%= yield %>
+        
+      </div>
     </div>
   </div>
 
