@@ -36,7 +36,7 @@ $ ->
         url: '/offices/get_roots?format=json',
         dataType: 'json',
         success: (data) ->
-          $('#office_selects').append('<div class="grey_field_long"><div id='+new_id+' class="office_select"><select data_level=0 id="person_people_offices_attributes_'+s+'_office_id" name="person[people_offices_attributes]['+s+'][office_id]"><option></option></select></div><a href="#" class="delete_entry"> ×</a></div>')
+          $('#office_selects').append('<div><div id='+new_id+' class="office_select"><select data_level=0 id="person_people_offices_attributes_'+s+'_office_id" name="person[people_offices_attributes]['+s+'][office_id]"><option></option></select></div><a href="#" class="delete_entry"> ×</a></div>')
           $.each data, (key, val) ->
             $('#person_people_offices_attributes_'+s+'_office_id').append('<option value='+val['id']+'>'+val['name']+'</option>')
     

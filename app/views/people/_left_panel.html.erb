@@ -10,7 +10,7 @@
         </div>
       
       
-        <div class="sfield field_left">
+        <div class="sfield field_group_left">
         <div class="ls"><%= t('.cfo')%></div>
           <div class="rs">
             <% Cfo.all.each do |cfo| %>
@@ -21,13 +21,13 @@
           </div>
         </div>
         
-        <div class="sfield field_left">
+        <div class="sfield field_group_left">
         <div class="ls"><%= t('.office')%></div>
           <div class="rs">
             
             
               <div id="filter_office_selects">
-                <div class="grey_field_long">
+                <div>
                   <div id="filter_office_select[0]" class="office_select">
                     <%= select_tag "office_id", options_from_collection_for_select(@offices, :id, :name), include_blank: true, data_level: 0 %>
                   </div>

@@ -96,7 +96,7 @@ class PeopleController < ApplicationController
       @q = @q.where(cfo_id: params[:cfo_id])
     end
     unless params[:office_id].blank?
-      @q = @q.joins(:people_offices).joins(:offices).where('people_offices.office_id = ? OR offices.ancestry REGEXP ?', params[:office_id], "^#{params[:office_id]}$|^#{params[:office_id]}/|/#{params[:office_id]}/|/#{params[:office_id]}$") # ^a/  /a/  /a$   '^3/|/44/|/6$';
+      @q = @q.joins(:people_offices).joins(:offices).where('people_offices.office_id = ? OR offices.ancestry REGEXP ?', params[:office_id], "^#{params[:office_id]}$|^#{params[:office_id]}/|/#{params[:office_id]}/|/#{params[:office_id]}$").uniq # ^a/  /a/  /a$   '^3/|/44/|/6$';
     end
     
     @q = @q.search(params[:search])

@@ -1,22 +1,22 @@
 <div id="address_fields">
-    <% if person.new_record? || person.addresses.blank?%>
-      <div id="addresses[0]" class="grey_field_long">
-        <%= label_tag "Primary" %>
-        <%= text_area_tag "person[addresses_attributes][0][address]", nil, class: "entry" %>
-        <%= hidden_field_tag "person[addresses_attributes][0][longitude]" %>
-        <%= hidden_field_tag "person[addresses_attributes][0][latitude]" %>
+  <% if person.new_record? || person.addresses.blank?%>
+    <div id="addresses[0]">
+      <%= "Primary" %><br>
+      <%= text_area_tag "person[addresses_attributes][0][address]", nil, class: "entry" %>
+      <%= hidden_field_tag "person[addresses_attributes][0][longitude]" %>
+      <%= hidden_field_tag "person[addresses_attributes][0][latitude]" %>
+    </div>
+  <% else %>
+    <% person.addresses.each_with_index do |address, index| %>
+      <div id="addresses[<%= index %>]">
+        <%= "Primary" if index == 0%><br>
+        <%= text_area_tag "person[addresses_attributes][#{index}][address]", address.address, class: "entry"  %>
+        <%= hidden_field_tag "person[addresses_attributes][#{index}][longitude]" %>
+        <%= hidden_field_tag "person[addresses_attributes][#{index}][latitude]" %>
+        <%= link_to '×', '#', class: 'delete_entry' unless index == 0 %>
       </div>
-    <% else %>
-      <% person.addresses.each_with_index do |address, index| %>
-        <div id="addresses[<%= index %>]" class="grey_field_long">
-          <%= label_tag "Primary" if index == 0%>
-          <%= text_area_tag "person[addresses_attributes][#{index}][address]", address.address, class: "entry"  %>
-          <%= hidden_field_tag "person[addresses_attributes][#{index}][longitude]" %>
-          <%= hidden_field_tag "person[addresses_attributes][#{index}][latitude]" %>
-          <%= link_to '×', '#', class: 'delete_entry' unless index == 0 %>
-        </div>
-      <% end %>
     <% end %>
+  <% end %>
 </div>
 <%= link_to image_tag("add.png") + t('.add_an_address'), '#', id: 'add_an_address' %>
 

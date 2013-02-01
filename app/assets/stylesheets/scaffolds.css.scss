@@ -2,6 +2,14 @@ $font-base: 'Rambla', sans-serif;
 
 html { padding:0px; }
 
+.ui-dialog {
+  font-family: $font-base;
+}
+
+input {
+  font-family: $font-base;
+}
+
 body {
   background-color: #fff;
   color: #333;

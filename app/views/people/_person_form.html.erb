@@ -78,7 +78,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <%= fields_for person, {validators: {}} do |pf| %>
 <div class="customform contact_form">
   
-  <div class="field">
+  <div class="field_group">
     <div class="sfield">
       <div class="ls"><%= pf.label :last_name, t('people.index.last_name') %>:</div>
       <div class="rs"><%= pf.text_field :last_name %></div>
@@ -92,33 +92,35 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <div class="rs"><%= pf.text_field :middle_name %></div>
     </div>
   </div>
-  <div class="field">
-    <div class="sfield">
-      <div class="ls"><%= pf.label :fb_profile, t('people.index.facebook_profile') %>:</div>
-      <div class="rs"><%= pf.text_field :fb_profile %></div>
-    </div>
+  
+  <div class="sfield field_group">
+    <div class="ls"><%= pf.label :fb_profile, t('people.index.facebook_profile') %>:</div>
+    <div class="rs"><%= pf.text_field :fb_profile %></div>
   </div>
-  <div class="sfield field">
+  
+  
+  <div class="sfield field_group">
     <div class="ls"><%= t('.addresses')%></div>
     <div class="rs">
       <%= render 'people/addresses_fields', no_remove: true, person: person %>
     </div>
   </div>
-  <div class="sfield field">
+  
+  <div class="sfield field_group">
     <div class="ls"><%= t('.phone_numbers')%></div>
     <div class="rs">
       <%= render 'people/phone_numbers_fields', no_remove: true, person: person %>
     </div>
   </div>
   
-  <div class="sfield field">
+  <div class="sfield field_group">
     <div class="ls"><%= t('.offices')%></div>
     <div class="rs">
       <%= render 'people/offices_fields', no_remove: true, person: person %>
     </div>
   </div>
   
-  <div class="sfield field">
+  <div class="sfield field_group">
     <div class="ls"><%= t('.cfo')%></div>
     <div class="rs">
       <% Cfo.all.each do |cfo| %>
@@ -129,7 +131,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </div>
   </div>
   
-  <div class="sfield field">
+  <div class="sfield field_group">
     <div class="ls"><%= t('.organization')%></div>
     <div class="rs">
       <%= render 'people/organization_fields', no_remove: true, person: person %>
