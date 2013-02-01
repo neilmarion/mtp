@@ -7,7 +7,7 @@ class PeopleController < ApplicationController
   
   def index
     @person = Person.new
-    @people = Person.joins(:organization).where('organization_id = ? OR organizations.ancestry REGEXP ?', current_organization.id, "^#{current_organization.id}$|^#{current_organization.id}/|/#{current_organization.id}/|/#{current_organization.id}$")
+    @people = Person.joins(:organization).where('organization_id = ? OR organizations.ancestry RLIKE ?', current_organization.id, "^#{current_organization.id}$|^#{current_organization.id}/|/#{current_organization.id}/|/#{current_organization.id}$")
 
     if params[:commit] == I18n.t('general.search')
       filter 
@@ -97,7 +97,7 @@ class PeopleController < ApplicationController
       @q = @q.where(cfo_id: params[:cfo_id])
     end
     unless params[:office_id].blank?
-      @q = @q.joins(:people_offices).joins(:offices).where('people_offices.office_id = ? OR offices.ancestry REGEXP ?', params[:office_id], "^#{params[:office_id]}$|^#{params[:office_id]}/|/#{params[:office_id]}/|/#{params[:office_id]}$").uniq # ^a/  /a/  /a$   '^3/|/44/|/6$';
+      @q = @q.joins(:people_offices).joins(:offices).where('people_offices.office_id = ? OR offices.ancestry RLIKE ?', params[:office_id], "^#{params[:office_id]}$|^#{params[:office_id]}/|/#{params[:office_id]}/|/#{params[:office_id]}$").uniq # ^a/  /a/  /a$   '^3/|/44/|/6$';
     end
     
     @q = @q.search(params[:search])
