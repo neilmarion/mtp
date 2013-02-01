@@ -8,5 +8,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   
+  def current_organization
+    @current_organization ||= Organization.find(current_user.organization_id)
+  end
+  
   helper_method :current_user
+  helper_method :current_organization
 end

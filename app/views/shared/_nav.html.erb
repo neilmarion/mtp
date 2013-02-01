@@ -1,9 +1,11 @@
 <div id="nav_container">
   <ul class="sf-menu" style="float:right">
     <li>
-      <a href="#">Organizations</a>
+      <a href="#">
+        <%= current_organization.name %>
+      </a>
       <ul>
-        <%= new_render_org_tree(Person.org_tree_node(Organization.first)) %>
+        <%= new_render_org_tree(current_user.org_tree_node) %>
       </ul>
     <li>
     <li>
