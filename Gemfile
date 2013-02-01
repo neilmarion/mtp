@@ -51,3 +51,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'shoulda'
 end
+
+group :production do
+  # gems specifically for Heroku go here
+  gem "pg"
+end
