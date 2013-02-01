@@ -7,7 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-a = Organization.create(name: 'IGLESIA NI CRISTO', type_of_children: 'District')
+a = Organization.create(name: 'ROOT', type_of_children: 'ROOT')
+a = a.children.create(name: 'IGLESIA NI CRISTO', type_of_children: 'District')
+inc = a
 a = a.children.create(name: 'Metro Manila South', type_of_children: 'Locale')
 a = a.children.create(name: 'Talon', type_of_children: 'Purok')
 for i in 1..4 
@@ -52,3 +54,5 @@ end
 Person.create(last_name: "dela Cruz", first_name: "Neil Marion", middle_name: "Flores", organization_id: @talon.id, cfo_id: @kadiwa.id)
 
 Person.first.offices = [@choir, @kadiwa_office]
+
+User.create({email: "nmfdelacruz@gmail.com", password: "eloisa", password_confirmation: "eloisa", organization_id: inc.id})
