@@ -54,8 +54,7 @@ ul.sf-menu li li li.sfHover ul {
 }
 ul.sf-menu li li li li:hover ul,
 ul.sf-menu li li li li.sfHover ul {
-	left:			10em; /* match ul width */
-	top:			0;
+	top:			-999em;
 }
 
 /*** DEMO SKIN ***/
