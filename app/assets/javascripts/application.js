@@ -15,6 +15,3 @@
 //= require_tree .
 //= require i18n
 //= require i18n/translations
-//= require superfish
-//= require hoverIntent
-//= require supersubs
