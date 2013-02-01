@@ -47,3 +47,6 @@ en:
       last_name: Last Name
       first_name: First Name
       middle_name: Middle Name
+  shared:
+    nav:
+      log_out: Logout
