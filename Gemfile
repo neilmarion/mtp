@@ -27,6 +27,7 @@ gem 'simplecov', :require => false, :group => :test
 gem 'i18n-js'
 gem 'will_paginate', '~> 3.0'
 gem 'bcrypt-ruby', :require => "bcrypt"
+gem "pg"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -50,9 +51,4 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'shoulda'
-end
-
-group :production do
-  # gems specifically for Heroku go here
-  gem "pg"
 end
