@@ -12,6 +12,7 @@ a = a.children.create(name: 'IGLESIA NI CRISTO', type_of_children: 'District')
 inc = a
 a = a.children.create(name: 'Metro Manila South', type_of_children: 'Locale')
 a = a.children.create(name: 'Talon', type_of_children: 'Purok')
+talon_org = a
 for i in 1..4 
   a.children.create(name: i.to_s, type_of_children: 'Grupo') 
 end
@@ -56,3 +57,5 @@ Person.create(last_name: "dela Cruz", first_name: "Neil Marion", middle_name: "F
 Person.first.offices = [@choir, @kadiwa_office]
 
 User.create({email: "nmfdelacruz@gmail.com", password: "eloisa", password_confirmation: "eloisa", organization_id: inc.id})
+User.create({email: "joepagz@finder.com", password: "talon", password_confirmation: "talon", organization_id: inc.id})
+User.create({email: "talon_user@finder.com", password: "jose", password_confirmation: "jose", organization_id: talon_org.id})
