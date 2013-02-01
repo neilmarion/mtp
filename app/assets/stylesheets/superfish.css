@@ -65,6 +65,15 @@ ul.sf-menu li li li li:hover li ul,
 ul.sf-menu li li li li.sfHover li ul {
 	top:			-999em;
 }
+ul.sf-menu li li li li li:hover ul,
+ul.sf-menu li li li li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+ul.sf-menu li li li li li:hover li ul,
+ul.sf-menu li li li li li.sfHover li ul {
+	top:			-999em;
+}
 
 /*** DEMO SKIN ***/
 .sf-menu {
