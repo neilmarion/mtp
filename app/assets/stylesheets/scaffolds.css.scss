@@ -1,9 +1,11 @@
+$font-base: 'Rambla', sans-serif;
+
 html { padding:0px; }
 
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: $font-base;
   font-size: 13px;
   line-height: 18px;
   height:100%;
@@ -11,9 +13,13 @@ body {
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: $font-base;
   font-size: 13px;
   line-height: 18px;
+}
+
+select {
+  font-family: $font-base;
 }
 
 pre {

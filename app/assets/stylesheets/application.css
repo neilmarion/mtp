@@ -11,8 +11,6 @@
  *= require_self
  *= require_tree .
  *= require superfish
- *= require superfish-navbar
  */
 
 a {text-decoration: none;}
-a:hover {background:none;}

@@ -17,3 +17,4 @@
 //= require i18n/translations
 //= require superfish
 //= require hoverIntent
+//= require supersubs
