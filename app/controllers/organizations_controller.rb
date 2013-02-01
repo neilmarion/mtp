@@ -88,6 +88,11 @@ class OrganizationsController < ApplicationController
     end
   end
   
+  def set_current
+    session[:current_organization_id] = params[:id]
+    redirect_to people_url
+  end
+  
   protected
   
   def get_root_organization

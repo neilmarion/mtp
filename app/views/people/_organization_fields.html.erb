@@ -3,22 +3,13 @@
     <% if person.new_record? || person.organization.nil? %>
       <%= select_tag "person[organization_id]", options_from_collection_for_select(@organizations, :id, :name), include_blank: true, data_level: 0 %><br>
     <% else %>
-      
       <% ancestor_no = person.organization.ancestors.count %>
-      <% person.organization.ancestors.each_with_index do |ancestor, index| %>
+      <% person.organization.ancestors_up_to_current_organization(current_organization).each_with_index do |ancestor, index| %>
         <% unless ancestor.ancestry.nil? %>
-          
-            
-            
-            <%= select_tag nil, options_from_collection_for_select(ancestor.siblings, :id, :name, ancestor.id), include_blank: true, data_level: index-1 %>
-          
+          <%= select_tag nil, options_from_collection_for_select(ancestor.siblings, :id, :name, ancestor.id), include_blank: true, data_level: index-1 %>
         <% end %>
       <% end %>
-      
-        
-        
         <%= select_tag "person[organization_id]", options_from_collection_for_select(person.organization.siblings, :id, :name, person.organization.id), include_blank: true, data_level: ancestor_no %>
-      
     <% end %>
   </div>
 </div>

@@ -5,14 +5,14 @@
     <p>From this screen you can edit, delete or rearrange your organizations. Clicking "Add new organization"<br/>will do a quick add by name. To edit more details, permissions and other info, select "edit" from the item's<br/>name on the list.</p>
   </div>
   
-  <h2><%= @root_org.name %></h2>
+  <h2><%= current_organization.name %></h2>
   
-  <% if @root_org.children.length == 0 %>
+  <% if current_organization.children.length == 0 %>
     <br/><%= link_to(t('.add_sub_org', type_of_children: @root_org.type_of_children.pluralize), '#', id: 'add_sub_orgs') %>
   <% end %>
   <div class="orgwrap">
-  <div id="orgs" style="<%= 'display:none' if @root_org.children.length == 0 %>">
-    <%= render 'org_column', parent: @root_org %>
+  <div id="orgs" style="<%= 'display:none' if current_organization.children.length == 0 %>">
+    <%= render 'org_column', parent: current_organization %>
     <div class="org_column" id="spinner_column" style="display:none">
       <a class="org_new">+ </a>
       <ul>

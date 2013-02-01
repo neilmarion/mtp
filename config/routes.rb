@@ -6,6 +6,10 @@ Mtp::Application.routes.draw do
     collection do
       get :get_children
     end
+    
+    member do
+      get :set_current
+    end
   end
   
   resources :offices do

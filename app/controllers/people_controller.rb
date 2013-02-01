@@ -2,16 +2,17 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   before_filter :get_parent_offices, only: [:index, :create, :edit]
-  before_filter :get_second_level_orgs, only: [:index, :create, :edit]
+  before_filter :get_orgs, only: [:index, :create, :edit]
   
   
   def index
     @person = Person.new
+    @people = Person.joins(:organization).where('organization_id = ? OR organizations.ancestry REGEXP ?', current_organization.id, "^#{current_organization.id}$|^#{current_organization.id}/|/#{current_organization.id}/|/#{current_organization.id}$")
 
     if params[:commit] == I18n.t('general.search')
       filter 
     else
-      @q = Person.search(params[:search])
+      @q = @people.search(params[:search])
     end
     
     @people = @q.paginate(:page => params[:page], :per_page => 20)
@@ -90,7 +91,7 @@ class PeopleController < ApplicationController
   protected
   
   def filter
-    @q = Person.where(cfo_id: Cfo.all.collect(&:id))
+    @q = @people.where(cfo_id: Cfo.all.collect(&:id))
   
     unless params[:cfo_id].blank?
       @q = @q.where(cfo_id: params[:cfo_id])
@@ -102,8 +103,8 @@ class PeopleController < ApplicationController
     @q = @q.search(params[:search])
   end
   
-  def get_second_level_orgs
-    @organizations = Organization.first.children
+  def get_orgs
+    @organizations = current_organization.children
   end
   
   def get_parent_offices
