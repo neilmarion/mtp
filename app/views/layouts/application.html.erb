@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Finderr</title>
+  <title>Finder</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -30,15 +30,19 @@
       
       <div id="menutop">
         <div id="menus">
-        <span id="logo">
-          <%= link_to image_tag("finder_logo.png"), people_path %>
-        </span>
-        <span class="<%= params[:controller] == "people" ? 'main_link_clicked' : 'main_link' %>">
-          <%= link_to 'People', people_path %>
-        </span>
-        <span class="<%= params[:controller] == "organizations" ? 'main_link_clicked' : 'main_link' %>">
-          <%= link_to 'Organizations', organizations_path %>
-        </span>
+            <span>
+              <%= link_to image_tag("finder_logo.png"), people_path, id: "finder_logo" %>
+            </span>
+          <div id="menus_container">
+            
+          
+            <span class="<%= params[:controller] == "people" ? 'main_link_clicked' : 'main_link' %>">
+              <%= link_to 'People', people_path %>
+            </span>
+            <span class="<%= params[:controller] == "organizations" ? 'main_link_clicked' : 'main_link' %>">
+              <%= link_to 'Organizations', organizations_path %>
+            </span>
+          </div>
         </div>
       </div>
         
