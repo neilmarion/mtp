@@ -1,13 +1,39 @@
-<h1>Log in</h1>
 
+
+<div id="menutop_login">
+          
+          
 <%= form_tag sessions_path do %>
   <p>
-    <%= label_tag :email %><br />
+    <span style="padding-right:20px;">
+    <%= label_tag :email %>&nbsp;
     <%= text_field_tag :email, params[:email] %>
-  </p>
-  <p>
-    <%= label_tag :password %><br />
+    </span>
+    
+    <span style="padding-right:20px;">
+    <%= label_tag :password %>&nbsp;
     <%= password_field_tag :password %>
+    </span>
+    <span class="button">
+      <%= submit_tag "Log in" %>
+    </span>
   </p>
-  <p class="button"><%= submit_tag "Log in" %></p>
+  
+
 <% end %>
+
+</div>
+
+
+<div id="container">
+
+  <%= image_tag "finder.jpg", style: 'width: 100%;' %>
+
+
+
+
+
+            
+</div>
+
+
