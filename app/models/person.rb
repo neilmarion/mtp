@@ -28,7 +28,7 @@ class Person < ActiveRecord::Base
   
   def organization_names(up_to_org)
     names = []
-    get_names_of_self_and_parents(organization, up_to_org).reverse.join(" | ")
+    get_names_of_self_and_parents(organization, up_to_org).reverse.join(" - ")
   end
   
   def delete_offices
