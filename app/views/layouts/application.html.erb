@@ -51,6 +51,8 @@
           container_id = 
             if params[:controller] == "organizations" &&  params[:action] == "edit"
               "organization_edit_container"
+            elsif params[:controller] == "people" &&  params[:action] == "show"
+              "people_show_container"
             else
               "container"
             end

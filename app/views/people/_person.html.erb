@@ -2,6 +2,6 @@
   <td class="last_name"><%= person.last_name %></td>
   <td class="first_name"><%= person.first_name %></td>
   <td class="offices"><%= person.office_names.join(', ') %></td>
-  <td class="organizations"><%= person.organization_names %></td>
+  <td class="organizations"><%= person.organization_names(current_organization) %></td>
   <td><%= person.cfo.name if person.cfo %></td>
 </tr>

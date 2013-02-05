@@ -26,31 +26,32 @@
 <h1>
   <%= @person.name %> <small><%= link_to(t('general.edit'), edit_person_path(@person)) %></small>
 </h1>
+
 <h3>
-  <%= @person.organization_names %>
+  <%= @person.organization_names(current_organization) %>
 </h3>
 
 <div>
-  <%= image_tag @person.fb_profile_pic_large %>
+  <%#= image_tag @person.fb_profile_pic_large %>
 </div>
 
-<div class="sfield field">
+<div class="sfield field_group">
   <div class="ls"><%= t('.addresses')%></div>
   <% @person.addresses.each do |address| %>
-    <div class="rs grey_field_long"><%= address.address %></div>
+    <div class="rs"><%= address.address %></div>
   <% end %>
 </div>
 
-<div class="sfield field">
+<div class="sfield field_group">
   <div class="ls"><%= t('.phone_numbers')%></div>
   <% @person.phone_numbers.each do |phone_number| %>
-    <div class="rs grey_field_long"><%= phone_number.phone_number %></div>
+    <div class="rs field_group"><%= phone_number.phone_number %></div>
   <% end %>
 </div>
 
-<div class="sfield field">
+<div class="sfield field_group">
   <div class="ls"><%= t('.offices')%></div>
   <% @person.office_names.each do |office_name| %>
-    <div class="rs grey_field_long"><%= office_name %></div>
+    <div class="rs"><%= office_name %></div>
   <% end %>
 </div>

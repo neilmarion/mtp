@@ -26,9 +26,9 @@ class Person < ActiveRecord::Base
     names
   end
   
-  def organization_names
+  def organization_names(up_to_org)
     names = []
-    get_names_of_self_and_parents(organization).reverse.join(" - ")
+    get_names_of_self_and_parents(organization, up_to_org).reverse.join(" | ")
   end
   
   def delete_offices
@@ -65,14 +65,19 @@ class Person < ActiveRecord::Base
   
   protected
   
-  def get_names_of_self_and_parents(o)
+  def get_names_of_self_and_parents(o, org = nil)
     return [] if o.nil?
-    names = [o.name]
+    names = ["#{o.name}"] if o.instance_of? Office
+    names = ["#{o.parent.type_of_children unless o.ancestry.nil?} #{o.name}"] if o.instance_of? Organization
     
-    if o.ancestry == nil
-      return [o.name]
+    puts org.id == o.id if org
+    puts o.inspect
+    
+    if o.ancestry == nil || ( org.id == o.id if org)
+      return ["#{o.name}"] if o.instance_of? Office
+      return [] if o.instance_of? Organization
     else
-      names += get_names_of_self_and_parents(o.parent)
+      names += org ? get_names_of_self_and_parents(o.parent, org) : get_names_of_self_and_parents(o.parent)
     end
     
     names

@@ -148,7 +148,7 @@ if Cfo.all.empty?
   Cfo.create(name: 'Binhi')
 end
 
-person = Person.create(last_name: "dela Cruz", first_name: "Neil Marion", middle_name: "Flores", organization_id: talon_org.id, cfo_id: kadiwa.id)
+person = Person.create(last_name: "dela Cruz", first_name: "Neil Marion", middle_name: "Flores", organization_id: talon_org.children.first.children.first.id, cfo_id: kadiwa.id)
 person.addresses.create(address: "05B Avocado St., Verdant Acres Subd., Pamplona 3, Las Pinas City", latitude: "14.4557085", longitude: "120.9824231")
 
 person.offices = [choir_adult_bass, kadiwa_ii_pangulo]
