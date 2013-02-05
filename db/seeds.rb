@@ -11,7 +11,7 @@ puts "Creating Organizations"
 a = Organization.create(name: 'ROOT', type_of_children: 'ROOT', longitude: "121.0653943", latitude: "14.6632838")
 a = inc = a.children.create(name: 'IGLESIA NI CRISTO', type_of_children: 'District', longitude: "121.0653943", latitude: "14.6632838")
 a = a.children.create(name: 'Metro Manila South', type_of_children: 'Locale', longitude: "121.0107383", latitude: "14.5469972")
-a = talon_org = a.children.create(name: 'Talon', type_of_children: 'Purok', longitude: "14.445282806398495", latitude: "120.98913688280334")
+a = talon_org = a.children.create(name: 'Talon', type_of_children: 'Purok', longitude: "120.98913688280334", latitude: "14.445282806398495")
 
 puts "Creating Purok suborganizations for #{talon_org.name}"
 
