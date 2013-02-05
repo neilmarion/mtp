@@ -4,9 +4,10 @@ class CreatePeople < ActiveRecord::Migration
       t.string :last_name
       t.string :first_name
       t.string :middle_name
-      t.integer :office_id
       t.integer :organization_id
       t.string :birth_date
+      t.integer :cfo_id
+      t.integer :fb_profile 
 
       t.timestamps
     end

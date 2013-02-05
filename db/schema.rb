@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130201100816) do
+ActiveRecord::Schema.define(:version => 20130201100531) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address"
     t.integer  "person_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
     t.string   "longitude"
     t.string   "latitude"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "cfos", :force => true do |t|
@@ -30,17 +30,17 @@ ActiveRecord::Schema.define(:version => 20130201100816) do
 
   create_table "offices", :force => true do |t|
     t.string   "name"
+    t.string   "ancestry"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "ancestry"
   end
 
   create_table "organizations", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
     t.string   "ancestry"
     t.string   "type_of_children"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "people", :force => true do |t|
@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(:version => 20130201100816) do
     t.string   "middle_name"
     t.integer  "organization_id"
     t.string   "birth_date"
+    t.integer  "cfo_id"
+    t.integer  "fb_profile"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.integer  "cfo_id"
-    t.string   "fb_profile"
   end
 
   create_table "people_offices", :force => true do |t|
@@ -72,9 +72,9 @@ ActiveRecord::Schema.define(:version => 20130201100816) do
   create_table "users", :force => true do |t|
     t.string   "email"
     t.string   "password_digest"
+    t.integer  "organization_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.integer  "organization_id"
   end
 
 end
