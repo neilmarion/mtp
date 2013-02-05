@@ -1,5 +1,5 @@
 class Organization < ActiveRecord::Base
-  attr_accessible :name, :ancestry
+  attr_accessible :name, :ancestry, :longitude, :latitude
   attr_accessible :type_of_children
   attr_accessible :parent_id
   

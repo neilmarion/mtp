@@ -39,6 +39,9 @@ ActiveRecord::Schema.define(:version => 20130201100531) do
     t.string   "name"
     t.string   "ancestry"
     t.string   "type_of_children"
+    t.string   "address"
+    t.string   "longitude"
+    t.string   "latitude"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
