@@ -139,6 +139,7 @@ if Office.all.empty?
     pnk.children.create(name: 'II Tagasuri')
     pnk.children.create(name: 'Kagawad')
   Office.create(name: 'Gardener')
+  Office.create(name: 'Bantay-Kapilya')
 end
 
 if Cfo.all.empty?
