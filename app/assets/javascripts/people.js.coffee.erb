@@ -23,7 +23,11 @@ $ ->
     
     
     for key of data
-      fb = data[key]['fb_profile'].split('/') if data[key]['fb_profile']
+      if data[key]['fb_profile']
+        fb = data[key]['fb_profile'].split('/')
+      else
+        fb = ""
+      
       latlng = new google.maps.LatLng(data[key]['addresses'][0]['latitude'], data[key]['addresses'][0]['longitude'])
       marker = new google.maps.Marker(
         position: latlng
