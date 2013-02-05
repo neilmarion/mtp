@@ -1,26 +1,8 @@
 <script type="text/javascript">
-var geocoder = new google.maps.Geocoder();
-
-function geocodePosition(pos) {
-  geocoder.geocode({
-    latLng: pos
-  }, function(responses) {
-    if (responses && responses.length > 0) {
-      updateMarkerAddress(responses[0].formatted_address);
-    } else {
-      updateMarkerAddress('Cannot determine address at this location.');
-    }
-  });
-}
 
 function updateMarkerPosition(latLng) {
   document.getElementById('person_addresses_attributes_0_longitude').value = latLng.lng()
   document.getElementById('person_addresses_attributes_0_latitude').value = latLng.lat()
-
-  document.getElementById('info').innerHTML = [
-    latLng.lat(),
-    latLng.lng()
-  ].join(', ');
 }
 
 function updateMarkerAddress(str) {
@@ -28,11 +10,20 @@ function updateMarkerAddress(str) {
 }
 
 function initialize() {
+  
+  <%
+    if person.new_record?
+      lat_long = current_organization.latitude_longitude
+    else
+      address = person.addresses.first
+      lat_long = [address.latitude, address.longitude] 
+    end
+    
+    lat = lat_long[0]
+    long = lat_long[1]
+  %>
 
-  <%= lat = @person.addresses.blank? ? 14.445282806398495 : @person.addresses.first.latitude %>
-  <%= long = @person.addresses.blank? ? 120.98913688280334 : @person.addresses.first.longitude %>
-
-  var latLng = new google.maps.LatLng(<%= lat.blank? ? 14.445282806398495 : lat %>, <%= long.blank? ? 120.98913688280334 : long %>);
+  var latLng = new google.maps.LatLng(<%= lat %>, <%= long %>);
   var map = new google.maps.Map(document.getElementById('map_canvas_edit'), {
     zoom: 17,
     center: latLng,
@@ -47,19 +38,9 @@ function initialize() {
   
   // Update current position info.
   updateMarkerPosition(latLng);
-  geocodePosition(latLng);
-  
-  // Add dragging event listeners.
-  google.maps.event.addListener(marker, 'dragstart', function() {
-    updateMarkerAddress('Dragging...');
-  });
   
   google.maps.event.addListener(marker, 'drag', function() {
     updateMarkerPosition(marker.getPosition());
-  });
-  
-  google.maps.event.addListener(marker, 'dragend', function() {
-    geocodePosition(marker.getPosition());
   });
 }
 
@@ -67,17 +48,10 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
-<div id="infoPanel">
-  <b>Current position:</b>
-  <div id="info"></div>
-  <b>Closest matching address:</b>
-  <div id="address"></div>
-  <div id="map_canvas_edit"></div>
-</div>
+<div id="map_canvas_edit"></div>
 
 <%= fields_for person, {validators: {}} do |pf| %>
 <div class="customform contact_form">
-  
   <div class="field_group">
     <div class="sfield">
       <div class="ls"><%= pf.label :last_name, t('people.index.last_name') %>:</div>
@@ -137,8 +111,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <%= render 'people/organization_fields', no_remove: true, person: person %>
     </div>
   </div>
-  
-        
 </div>
   
 <% end %>
