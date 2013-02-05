@@ -15,7 +15,7 @@ class PeopleController < ApplicationController
       @q = @people.search(params[:search])
     end
     
-    @people = @q.paginate(:page => params[:page], :per_page => 20)
+    @people = @q.page(params[:page]).per(5)
 
     respond_to do |format|
       format.html # index.html.erb

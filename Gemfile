@@ -25,7 +25,7 @@ gem 'ancestry'
 gem 'meta_search'
 gem 'simplecov', :require => false, :group => :test
 gem 'i18n-js'
-gem 'will_paginate', '~> 3.0'
+gem 'kaminari'
 gem 'bcrypt-ruby', :require => "bcrypt"
 gem "pg"
 
