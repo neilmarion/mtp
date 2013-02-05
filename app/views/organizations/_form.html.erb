@@ -10,11 +10,18 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  
+  <div class="field_group">
+    <div class="sfield">
+      <div class="ls"><%= f.label :name %>:</div>
+      <div class="rs"><%= f.text_field :name %></div>
+    </div>
+    <div class="sfield">
+      <div class="ls"><%= f.label :type_of_children %>:</div>
+      <div class="rs"><%= f.text_field :type_of_children %></div>
+    </div>
   </div>
+  
   <div class="item formactions">
     <%= f.submit %><%= link_to(t('.back'), :back, :class=> "cancel")%>
   </div>

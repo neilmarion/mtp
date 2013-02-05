@@ -18,4 +18,17 @@ class Organization < ActiveRecord::Base
     
     organizations.reverse
   end
+  
+  def latitude_longitude
+    if longitude == nil && latitude == nil
+      ancestry.split('/').reverse.each do |ancestor_id|
+        ancestor = Organization.find(ancestor_id)
+        if ancestor.longitude != nil && ancestor.latitude != nil
+          return [ancestor.latitude, ancestor.longitude]
+        end
+      end
+    else
+      [latitude ,longitude]
+    end
+  end
 end
