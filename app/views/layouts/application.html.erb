@@ -59,8 +59,7 @@
         %>
         
         
-        <div id="<%= container_id %>" >
-          
+        <div id="<%= container_id %>">
           <div id="left" style="<%= 'display:none' if params[:controller] != "people" || params[:action] != 'index'%>" >
             <%= render 'people/left_panel' if params[:controller] == "people" && params[:action] == 'index' %>
           </div>

@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20130201100531) do
     t.integer  "organization_id"
     t.string   "birth_date"
     t.integer  "cfo_id"
-    t.integer  "fb_profile"
+    t.string   "fb_profile"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end

@@ -7,7 +7,7 @@ class CreatePeople < ActiveRecord::Migration
       t.integer :organization_id
       t.string :birth_date
       t.integer :cfo_id
-      t.integer :fb_profile 
+      t.string :fb_profile 
 
       t.timestamps
     end

@@ -14,7 +14,7 @@
     
     <%
       if person.new_record? || (person.addresses.first.latitude.blank? && person.addresses.first.longitude.blank?)
-        lat_long = current_organization.latitude_longitude
+        lat_long = @person.organization.latitude_longitude
       else
         address = person.addresses.first
         lat_long = [address.latitude, address.longitude] 

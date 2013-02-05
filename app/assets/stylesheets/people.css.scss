@@ -2,3 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+td span.office_name {
+  background: #ffe8d6;
+  font-size: 10px;
+  padding: 3px 5px;
+  border: 1px solid #e89858;
+}
+
+td span.organization_name {
+  background: #c4e2ff;
+  font-size: 10px;
+  padding: 3px 5px;
+  border: 1px solid #7fc1ff;
+}
+
