@@ -47,6 +47,9 @@ en:
       last_name: Last Name
       first_name: First Name
       middle_name: Middle Name
+    add_person:
+      delete_confirm: Are you sure you want to delete %{person}? If not, click cancel.
+      delete: Delete Person
   shared:
     nav:
       log_out: Logout

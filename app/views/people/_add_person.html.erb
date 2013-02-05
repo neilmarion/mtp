@@ -13,8 +13,11 @@
     
     <br/>
 
-    <%= submit_tag t('general.save'), class: 'save_and_close save' %>
     <%= submit_tag t('general.save_and_add'), class: 'save_and_more save' unless params[:action] == 'edit' %>
+    <%= submit_tag t('general.save'), class: 'save_and_close save' %>
+    <% if params[:action] == "edit" %>
+      <%= link_to(t('.delete'), person_path(@person), method: :delete, class: 'delete cleangray', data: { confirm: t('.delete_confirm', person: @person.name) })%>
+    <% end %>
   <% end %>
   
 </div>

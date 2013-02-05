@@ -2,7 +2,20 @@
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
   <script type="text/javascript">
     function initialize() {
-      var myLatlng = new google.maps.LatLng(<%= @person.addresses.first.latitude %>,<%= @person.addresses.first.longitude %>);
+    
+      <%
+        if @person.addresses.first.latitude.blank? && @person.addresses.first.longitude.blank?
+          lat_long = current_organization.latitude_longitude
+        else
+          address = @person.addresses.first
+          lat_long = [address.latitude, address.longitude] 
+        end
+        
+        lat = lat_long[0]
+        long = lat_long[1]
+      %>
+    
+      var myLatlng = new google.maps.LatLng(<%= lat %>, <%= long %>);
       var mapOptions = {
         zoom: 17,
         center: myLatlng,
