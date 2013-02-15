@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :organization_id
   has_secure_password
   validates_presence_of :password, :on => :create
+  belongs_to :organization
   
     #this should be for the User model
   def org_tree_node(o = nil)

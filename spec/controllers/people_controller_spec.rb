@@ -41,6 +41,7 @@ describe PeopleController do
   before(:each) do
     @office = FactoryGirl.create(:office)
     @organization = FactoryGirl.create(:organization)
+    @user = FactoryGirl.create(:user, organization: @organization)
   end
 
   describe "index" do

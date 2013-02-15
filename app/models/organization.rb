@@ -6,6 +6,7 @@ class Organization < ActiveRecord::Base
   acts_as_tree
   
   has_many :people, :dependent => :destroy
+  has_many :users
   validates_presence_of :name, message: "can't be blank"
   
   def ancestors_up_to_current_organization(org)    
