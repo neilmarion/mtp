@@ -42,6 +42,9 @@ describe PeopleController do
     @office = FactoryGirl.create(:office)
     @organization = FactoryGirl.create(:organization)
     @user = FactoryGirl.create(:user, organization: @organization)
+    
+    session[:user_id] = @user.id
+    session[:current_organization_id] = @user.organization.id
   end
 
   describe "index" do
@@ -57,26 +60,26 @@ describe PeopleController do
     end
     
     it "sorts all people alphabetically by last_name" do
-      get :index, {search: {meta_sort: "last_name.asc"}}, valid_session
+      get :index, {search: {meta_sort: "last_name.asc"}}
       assigns(:people).should eq([@person_2, @person_3, @person_1])
       
-      get :index, {search: {meta_sort: "last_name.desc"}}, valid_session
+      get :index, {search: {meta_sort: "last_name.desc"}}
       assigns(:people).should eq([@person_1, @person_3, @person_2])
     end
     
     it "sorts all people alphabetically by first_name" do
-      get :index, {search: {meta_sort: "first_name.asc"}}, valid_session
+      get :index, {search: {meta_sort: "first_name.asc"}}
       assigns(:people).should eq([@person_3, @person_2, @person_1])
       
-      get :index, {search: {meta_sort: "first_name.desc"}}, valid_session
+      get :index, {search: {meta_sort: "first_name.desc"}}
       assigns(:people).should eq([@person_1, @person_2, @person_3])
     end
     
     it "sorts all people alphabetically by middle_name" do
-      get :index, {search: {meta_sort: "middle_name.asc"}}, valid_session
+      get :index, {search: {meta_sort: "middle_name.asc"}}
       assigns(:people).should eq([@person_2, @person_1, @person_3])
       
-      get :index, {search: {meta_sort: "middle_name.desc"}}, valid_session
+      get :index, {search: {meta_sort: "middle_name.desc"}}
       assigns(:people).should eq([@person_3, @person_1, @person_2])
     end
     
@@ -89,7 +92,7 @@ describe PeopleController do
   describe "GET show" do
     it "assigns the requested person as @person" do
       person = FactoryGirl.create(:person, organization: @organization)
-      get :show, {:id => person.to_param}, valid_session
+      get :show, {:id => person.to_param}
       assigns(:person).should eq(person)
     end
   end
@@ -97,7 +100,7 @@ describe PeopleController do
   describe "GET edit" do
     it "assigns the requested person as @person" do
       person = FactoryGirl.create(:person, organization: @organization)
-      get :edit, {:id => person.to_param}, valid_session
+      get :edit, {:id => person.to_param}
       assigns(:person).should eq(person)
     end
   end
@@ -106,12 +109,12 @@ describe PeopleController do
     describe "with valid params" do
       it "creates a new Person" do
         expect {
-          post :create, valid_attributes, valid_session
+          post :create, valid_attributes
         }.to change(Person, :count).by(1)
       end
 
       it "assigns a newly created person as @person" do
-        post :create, valid_attributes, valid_session
+        post :create, valid_attributes
         assigns(:person).should be_a(Person)
         assigns(:person).should be_persisted
       end
@@ -121,7 +124,7 @@ describe PeopleController do
       it "assigns a newly created but unsaved person as @person" do
         # Trigger the behavior that occurs when invalid params are submitted
         Person.any_instance.stub(:save).and_return(false)
-        post :create, {person: invalid_attributes}, valid_session
+        post :create, {person: invalid_attributes}
         assigns(:person).should be_a_new(Person)
       end
 
@@ -140,18 +143,18 @@ describe PeopleController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         Person.any_instance.should_receive(:update_attributes).with({ "last_name" => "MyString", "organization_id" => "#{@organization.id}" })
-        put :update, {:id => person.to_param, :person => { "last_name" => "MyString", :organization_id => @organization.id }}, valid_session
+        put :update, {:id => person.to_param, :person => { "last_name" => "MyString", :organization_id => @organization.id }}
       end
 
       it "assigns the requested person as @person" do
         person = FactoryGirl.create(:person, organization: @organization)
-        put :update, {:id => person.to_param}, valid_attributes, valid_session
+        put :update, {:id => person.to_param}, valid_attributes
         assigns(:person).should eq(person)
       end
 
       it "redirects to the person" do
         person = FactoryGirl.create(:person, organization: @organization)
-        put :update, {:id => person.to_param}, valid_attributes, valid_session
+        put :update, {:id => person.to_param}, valid_attributes
         response.should redirect_to(person)
       end
     end
@@ -161,7 +164,7 @@ describe PeopleController do
         person = FactoryGirl.create(:person, organization: @organization)
         # Trigger the behavior that occurs when invalid params are submitted
         Person.any_instance.stub(:save).and_return(false)
-        put :update, {:id => person.to_param, :person => { "last_name" => "invalid value" }}, valid_session
+        put :update, {:id => person.to_param, :person => { "last_name" => "invalid value" }}
         assigns(:person).should eq(person)
       end
 
@@ -169,7 +172,7 @@ describe PeopleController do
         person = FactoryGirl.create(:person, organization: @organization)
         # Trigger the behavior that occurs when invalid params are submitted
         Person.any_instance.stub(:save).and_return(false)
-        put :update, {:id => person.to_param, :person => invalid_attributes}, valid_session
+        put :update, {:id => person.to_param, :person => invalid_attributes}
         response.should render_template("edit")
       end
     end
@@ -179,13 +182,13 @@ describe PeopleController do
     it "destroys the requested person" do
       person = FactoryGirl.create(:person, organization: @organization)
       expect {
-        delete :destroy, {:id => person.to_param}, valid_session
+        delete :destroy, {:id => person.to_param}
       }.to change(Person, :count).by(-1)
     end
 
     it "redirects to the people list" do
       person = FactoryGirl.create(:person, organization: @organization)
-      delete :destroy, {:id => person.to_param}, valid_session
+      delete :destroy, {:id => person.to_param}
       response.should redirect_to(people_url)
     end
   end
