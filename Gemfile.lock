@@ -109,6 +109,9 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rack_session_access (0.0.3)
+      builder (>= 2.0.0)
+      rack (>= 1.0.0)
     rails (3.2.9)
       actionmailer (= 3.2.9)
       actionpack (= 3.2.9)
@@ -195,6 +198,7 @@ DEPENDENCIES
   meta_search
   mysql2
   pg
+  rack_session_access
   rails (= 3.2.9)
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)

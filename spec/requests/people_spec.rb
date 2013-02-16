@@ -11,6 +11,8 @@ describe "People", :js => :true do
     fill_in 'Email', :with => @user.email
     fill_in 'Password', :with => @user.password
     click_button "Log in"
+    
+    page.set_rack_session(:user_id => @user.id)
   end
 
   describe "GET /people" do

@@ -51,4 +51,5 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'shoulda'
+  gem 'rack_session_access'
 end
