@@ -70,9 +70,6 @@ class Person < ActiveRecord::Base
     names = ["#{o.name}"] if o.instance_of? Office
     names = ["#{o.parent.type_of_children unless o.ancestry.nil?} #{o.name}"] if o.instance_of? Organization
     
-    puts org.id == o.id if org
-    puts o.inspect
-    
     if o.ancestry == nil || ( org.id == o.id if org)
       return ["#{o.name}"] if o.instance_of? Office
       return [] if o.instance_of? Organization

@@ -17,6 +17,8 @@ class PeopleController < ApplicationController
     
     @people = @q.page(params[:page]).per(5)
 
+    puts @people.inspect
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @people.to_json(:include => [:addresses]) }
