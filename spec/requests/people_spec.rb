@@ -5,6 +5,12 @@ describe "People", :js => :true do
     @office = FactoryGirl.create(:office)
     @organization = FactoryGirl.create(:organization)
     @child_organization = FactoryGirl.create(:organization, parent: @organization)
+    @user = FactoryGirl.create(:user, organization: @child_organization)
+    
+    visit new_session_path
+    fill_in 'Email', :with => @user.email
+    fill_in 'Password', :with => @user.password
+    click_button "Log in"
   end
 
   describe "GET /people" do
@@ -13,7 +19,6 @@ describe "People", :js => :true do
     end
   
     it "displays people" do
-      visit people_path
       page.should have_content(@person.first_name)
       page.should have_content(@person.last_name)
       page.should have_content(@person.middle_name)
