@@ -49,10 +49,9 @@ describe PeopleController do
 
   describe "index" do
     before(:each) do
-      @org_0 = FactoryGirl.create(:organization)
-      @org_1 = FactoryGirl.create(:organization, name: "B", parent: @org_0)
-      @org_2 = FactoryGirl.create(:organization, name: "C", parent: @org_0)
-      @org_3 = FactoryGirl.create(:organization, name: "A", parent: @org_0)
+      @org_1 = FactoryGirl.create(:organization, name: "B", parent: @organization)
+      @org_2 = FactoryGirl.create(:organization, name: "C", parent: @organization)
+      @org_3 = FactoryGirl.create(:organization, name: "A", parent: @organization)
     
       @person_1 = FactoryGirl.create(:person, first_name: "Jerome", middle_name: "Garcia", last_name: "Charles", organization: @org_1)
       @person_2 = FactoryGirl.create(:person, first_name: "Bob", middle_name: "Antonov", last_name: "Aaron", organization: @org_2)
@@ -60,31 +59,27 @@ describe PeopleController do
     end
     
     it "sorts all people alphabetically by last_name" do
-      get :index, {search: {meta_sort: "last_name.asc"}}
+      get :index, {"search"=>{"meta_sort"=>"last_name.asc"}}
       assigns(:people).should eq([@person_2, @person_3, @person_1])
       
-      get :index, {search: {meta_sort: "last_name.desc"}}
+      get :index, {"search"=>{"meta_sort"=>"last_name.desc"}}
       assigns(:people).should eq([@person_1, @person_3, @person_2])
     end
     
     it "sorts all people alphabetically by first_name" do
-      get :index, {search: {meta_sort: "first_name.asc"}}
+      get :index, {"search"=>{"meta_sort"=>"first_name.asc"}}
       assigns(:people).should eq([@person_3, @person_2, @person_1])
       
-      get :index, {search: {meta_sort: "first_name.desc"}}
+      get :index, {"search"=>{"meta_sort"=>"first_name.desc"}}
       assigns(:people).should eq([@person_1, @person_2, @person_3])
     end
     
     it "sorts all people alphabetically by middle_name" do
-      get :index, {search: {meta_sort: "middle_name.asc"}}
+      get :index, {"search"=>{"meta_sort"=>"middle_name.asc"}}
       assigns(:people).should eq([@person_2, @person_1, @person_3])
       
-      get :index, {search: {meta_sort: "middle_name.desc"}}
+      get :index, {"search"=>{"meta_sort"=>"middle_name.desc"}}
       assigns(:people).should eq([@person_3, @person_1, @person_2])
-    end
-    
-    it "sorts all people alphabetically by sub-organization name" do
-      pending
     end
     
   end

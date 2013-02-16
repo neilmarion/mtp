@@ -1,6 +1,7 @@
 <tr id="<%= dom_id(person) %>" data-id="<%= person.id %>" class="person_row <%= extra if defined?(extra) %>" data-name="<%= person.name %>">
   <td class="last_name"><%= person.last_name %></td>
   <td class="first_name"><%= person.first_name %></td>
+  <td class="first_name"><%= person.middle_name %></td>
   <td class="offices">
   <% person.office_names.each do |office_name| %>
     <span class="office_name"><%= office_name %></span>
