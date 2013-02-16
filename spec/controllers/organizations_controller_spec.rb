@@ -126,10 +126,10 @@ describe OrganizationsController do
         assigns(:organization).should eq(organization)
       end
 
-      it "redirects to the organization" do
+      it "redirects to organizations" do
         organization = Organization.create! valid_attributes
         put :update, {:id => organization.to_param, :organization => valid_attributes}, valid_session
-        response.should redirect_to(organization)
+        response.should redirect_to(organizations_path)
       end
     end
 
