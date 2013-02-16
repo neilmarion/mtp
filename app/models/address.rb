@@ -3,7 +3,7 @@ class Address < ActiveRecord::Base
   
   belongs_to :person
   
-  def is_latlng_present?
+  def has_latlng?
     return false if latitude.blank? or longitude.blank? or latitude.nil? or longitude.nil?
     return true
   end

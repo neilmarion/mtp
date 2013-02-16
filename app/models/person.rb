@@ -63,6 +63,10 @@ class Person < ActiveRecord::Base
     "http://graph.facebook.com/#{fb_username}/picture?type=large"
   end
   
+  def main_address
+    addresses.first
+  end
+  
   protected
   
   def get_names_of_self_and_parents(o, org = nil)

@@ -10,14 +10,16 @@ function initialize() {
   var map = new google.maps.Map(document.getElementById('map'), mapOptions);
   
   <% @people.each_with_index do |person, index| %>
-    latlng = new google.maps.LatLng(<%= person.addresses.first.latitude %>,<%= person.addresses.first.longitude %>);
-    marker = new google.maps.Marker({
-      position: latlng,
-      map: map,
-      title: '<%= person.name %>',
-      labelContent: '<%= person.name %>',
-      html: '<div><%= image_tag person.fb_profile_pic_square unless person.fb_profile.blank? %><%= link_to person.name, person_path(person) %><br><%= person.organization_names(current_organization) %></div>'
-    });
+    <% if person.main_address.has_latlng? %>
+      latlng = new google.maps.LatLng(<%= person.addresses.first.latitude %>,<%= person.addresses.first.longitude %>);
+      marker = new google.maps.Marker({
+        position: latlng,
+        map: map,
+        title: '<%= person.name %>',
+        labelContent: '<%= person.name %>',
+        html: '<div><%= image_tag person.fb_profile_pic_square unless person.fb_profile.blank? %><%= link_to person.name, person_path(person) %><br><%= person.organization_names(current_organization) %></div>'
+      });
+    <% end %>
     
     markers.push(marker)
   <% end %>
