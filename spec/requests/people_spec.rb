@@ -4,8 +4,9 @@ describe "People", :js => :true do
   before(:each) do
     @office = FactoryGirl.create(:office)
     @organization = FactoryGirl.create(:organization)
-    @child_organization = FactoryGirl.create(:organization, parent: @organization)
-    @user = FactoryGirl.create(:user, organization: @child_organization)
+    @org_0 = FactoryGirl.create(:organization, parent: @organization)
+    @org_1 = FactoryGirl.create(:organization, parent: @org_0)
+    @user = FactoryGirl.create(:user, organization: @org_0)
     
     visit new_session_path
     fill_in 'Email', :with => @user.email
@@ -15,7 +16,8 @@ describe "People", :js => :true do
 
   describe "GET /people" do
     before(:each) do
-      @person = FactoryGirl.create(:person, organization: @child_organization, offices: [@office])
+      @person = FactoryGirl.create(:person, organization: @organization, offices: [@office])
+      visit people_path
     end
   
     it "displays people" do
@@ -39,23 +41,10 @@ describe "People", :js => :true do
       fill_in "Middle Name", :with => "Middle Name"
       select @office.name, :from => "person_people_offices_attributes_0_office_id"
       #click_link "Add an Office"
-      select @child_organization.name, :from => "person_organization_id"
-      click_button "Save and close"
-    end
-  end
-  
-  describe "DELETE /people" do
-    before(:each) do
-      @person = FactoryGirl.create(:person, organization: @child_organization, offices: [@office])
-      visit people_path
-    end
-  
-    it "deletes people" do
-      expect {
-        my_link = find(:xpath, "//a[contains(@href,'/people/1')]")
-        my_link.click
-        page.driver.browser.switch_to.alert.accept
-      }.to change(Person, :count).by -1
+      select @org_1.name, :from => "person_organization_id"
+      find('#save').click
+      #first(:button, "Save").click
+      sleep 5
     end
   end
 end
