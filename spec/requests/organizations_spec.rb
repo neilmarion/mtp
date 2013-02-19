@@ -7,6 +7,8 @@ describe "Organizations", :js => :true do
     @org_3 = FactoryGirl.create(:organization, parent: @org_1)
     @org_4 = FactoryGirl.create(:organization, parent: @org_2)
     @org_5 = FactoryGirl.create(:organization, parent: @org_2)
+    @org_6 = FactoryGirl.create(:organization, parent: @org_4)
+    @org_7 = FactoryGirl.create(:organization, parent: @org_4)
     @user = FactoryGirl.create(:user, organization: @org_2)
     
     visit new_session_path
@@ -24,9 +26,11 @@ describe "Organizations", :js => :true do
     end
     
     it "displays sub-orgs of an org at click" do
-      click_link @org_2.name
-      page.should have_content(@org_4.name)
-      page.should have_content(@org_5.name)
+      within("#orgs") do
+        click_link @org_4.name
+      end
+      page.should have_content(@org_6.name)
+      page.should have_content(@org_7.name)
     end
   end
   
