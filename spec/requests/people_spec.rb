@@ -16,7 +16,7 @@ describe "People", :js => :true do
 
   describe "GET /people" do
     before(:each) do
-      @person = FactoryGirl.create(:person, organization: @organization, offices: [@office])
+      @person = FactoryGirl.create(:person, organization: @org_1, offices: [@office])
       visit people_path
     end
   
@@ -25,7 +25,7 @@ describe "People", :js => :true do
       page.should have_content(@person.last_name)
       page.should have_content(@person.middle_name)
       page.should have_content(@person.office_names.join(', '))
-      page.should have_content(@person.organization_names)
+      page.should have_content(@person.organization_names(@org_0))
     end
   end
   

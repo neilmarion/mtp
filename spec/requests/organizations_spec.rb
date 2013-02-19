@@ -7,7 +7,13 @@ describe "Organizations", :js => :true do
     @org_3 = FactoryGirl.create(:organization, parent: @org_1)
     @org_4 = FactoryGirl.create(:organization, parent: @org_2)
     @org_5 = FactoryGirl.create(:organization, parent: @org_2)
+    @user = FactoryGirl.create(:user, organization: @org_2)
     
+    visit new_session_path
+    fill_in 'Email', :with => @user.email
+    fill_in 'Password', :with => @user.password
+    click_button "Log in"
+
     visit organizations_path
   end
 
